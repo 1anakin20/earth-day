@@ -12,7 +12,7 @@ import {Card} from "@mui/material";
 export default function Landing() {
   return (
     <>
-      <ResponsiveAppBar></ResponsiveAppBar>
+      <ResponsiveAppBar />
 
       <Card variant="outlined">Posts go here</Card>
     </>
