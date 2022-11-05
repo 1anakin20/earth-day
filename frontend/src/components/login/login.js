@@ -4,12 +4,25 @@ import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import ResponsiveAppBar from "../ResponsiveAppBar";
+import {auth, signInWithEmailAndPassword, signInWithGoogle} from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (loading) {
+            // maybe trigger a loading screen
+            return;
+        }
+        if (user) navigate("/");
+    }, [user, loading]);
 
     return (
         <div className="login__root">
@@ -38,8 +51,12 @@ function Login() {
                             onChange={(e) => setPassword(e.target.value)}/>
                         <Button
                             variant={"contained"}
-                            className="login__btn">
+                            className="login__btn"
+                            onClick={() => signInWithEmailAndPassword(username, password)}>
                             Login
+                        </Button>
+                        <Button className="login__btn login__google" onClick={signInWithGoogle} variant={"contained"}>
+                            Login with Google
                         </Button>
                         <Link to={'/reset'}>Forgot password?</Link>
                     </div>
