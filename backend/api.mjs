@@ -16,7 +16,6 @@ app.get('/sort/:field/:type', (req, res) => {
   // To pass deep copy of array of objects
   const returnData = JSON.parse(JSON.stringify(data))
   if(validateParams(sortField, sortType)) {
-    console.log("reached here")
     returnData.sort((a,b) => (a[sortField] > b[sortField]) ? 1 : ((b[sortField] > a[sortField]) ? -1 : 0))
     if(sortType == 'desc') {
       returnData.reverse()
