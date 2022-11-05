@@ -1,0 +1,28 @@
+html {
+    background-color: rgba(229, 253, 220, 0.34);
+}
+
+#description {
+    width: 100%;
+    resize: none;
+}
+
+.form__grid {
+    gap: 10px;
+    border-radius: 10px;
+    padding: 30px 100px;
+}
+
+.fieldset {
+    border-radius: 10px;
+    background-color: white;
+    padding: 30px 100px;
+    box-shadow: 5px 5px 15px rgba(0, 127, 95, 0.12);
+    border-left: thick solid #55A630;
+    width: 55%;
+    text-align: left;
+}
+
+#post {
+    width: 20em;
+}
