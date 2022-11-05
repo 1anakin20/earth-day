@@ -4,8 +4,12 @@ import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
+import {useState} from "react";
 
 function Login() {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
     return (<div className="login">
         <div className="login__container">
             <h1><span className={"black"}>Glean</span><span className={"green"}>ful</span></h1>
@@ -18,13 +22,15 @@ function Login() {
                 type="email"
                 placeholder="Email"
                 autoComplete="email"
-                focused/>
+                focused
+                onChange={(e) => setUsername(e.target.value)}/>
             <TextField
                 id="outlined-password-input"
                 label="Password"
                 type="password"
                 autoComplete="current-password"
-                variant="outlined"/>
+                variant="outlined"
+                onChange={(e) => setPassword(e.target.value)}/>
             <Button
                 variant={"contained"}
                 className="login__btn">
