@@ -1,0 +1,32 @@
+.login {
+    background-image: url(../../images/field_1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.login {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login__container {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #dcdcdc;
+    padding: 30px 100px;
+    gap: 10px;
+}
+
+.black {
+    color: black;
+}
+
+.green {
+    color: green;
+}

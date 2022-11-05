@@ -1,0 +1,112 @@
+[
+  {
+    "farmName" : "Quinn Farm",
+    "cropType" : "Apples",
+    "description": "Farm",
+    "date" : "2022-11-04",
+    "address" : "2495 Bd Perrot, Notre-Dame-de-l'Île-Perrot, QC J7V 8P4",
+    "servingFoodBank" : "On Rock Community Services",
+    "servingFoodBankAddress" : "9554 Boul Gouin O, Pierrefonds-Roxboro, QC H9H 0A3",
+    "capacity" : 8,
+    "remainingSpots" : 5
+  },
+  {
+    "farmName" : "Lufa Farms",
+    "cropType" : "Bell Peppers",
+    "description": "Farm in Montreal, Quebec",
+    "date" : "2022-11-03",
+    "address" : "3075 Boulevard Thimens #201, Saint-Laurent, Quebec H4R 1Y2",
+    "servingFoodBank" : "West Island Assistance Fund",
+    "servingFoodBankAddress" : "23 Rue du Centre Commercial, Roxboro, QC H8Y 2N9",
+    "capacity" : 2,
+    "remainingSpots" : 1
+  },
+  {
+    "farmName" : "Mini Mushroom Farms",
+    "cropType" : "Mushrooms",
+    "description": "Farm in Montreal, Quebec",
+    "date" : "2022-10-31",
+    "address" : "3700 Saint-Patrick St. #118B, Montreal, Quebec H4E 1A2",
+    "servingFoodBank" : "Mada Community Center",
+    "servingFoodBankAddress" : "6875 Decarie Blvd, Montreal, Quebec H3W 3E4",
+    "capacity" : 1,
+    "remainingSpots" : 0
+  },
+  {
+    "farmName" : "Les Jardins Carya",
+    "cropType" : "Carrots",
+    "description": "Farm in Senneville, Quebec",
+    "date" : "2022-11-05",
+    "address" : "39 Phillips Ave, Senneville, Quebec H9X 3X8",
+    "servingFoodBank" : "On Rock Community Services",
+    "servingFoodBankAddress" : "9554 Boul Gouin O, Pierrefonds-Roxboro, QC H9H 0A3",
+    "capacity" : 10,
+    "remainingSpots" : 8
+  },
+  {
+    "farmName" : "Ferme Foxfield Farm",
+    "cropType" : "Garilc",
+    "description": "Farm in Saint-Lazare, Quebec",
+    "date" : "2022-11-03",
+    "address" : "3066 Chemin St Charles, Saint-Lazare, QC J7T 2H7",
+    "servingFoodBank" : "Centre D'Action Benevole Ouest",
+    "servingFoodBankAddress" : "1, rue de l'Église, Sainte-Anne-de-Bellevue, Quebec H9X 1W4",
+    "capacity" : 12,
+    "remainingSpots" : 6
+  },
+  {
+    "farmName" : "Coop CultivAction Farm at Loyola Campus",
+    "cropType" : "Tomatoes",
+    "description": "Farm",
+    "date" : "2022-11-01",
+    "address" : "Montreal, Quebec H4B 2C2",
+    "servingFoodBank" : "The Depot Community Food Centre (Program Space)",
+    "servingFoodBankAddress" : "6450 Somerled Ave, Montreal, Quebec H4V 1S5",
+    "capacity" : 3,
+    "remainingSpots" : 1
+  },
+  {
+    "farmName" : "Bleuetière Sylvie Rémillard",
+    "cropType" : "Blueberries",
+    "description": "Farm in Québec",
+    "date" : "2022-11-02",
+    "address" : "1250 QC-209, Franklin, QC J0S 1E0",
+    "servingFoodBank" : "Hope Food Bank",
+    "servingFoodBankAddress" : "7777 George St, Lasalle, Quebec H8P 1C8",
+    "capacity" : 9,
+    "remainingSpots" : 3
+  },
+  {
+    "farmName" : "LES FERMES LUSSIER",
+    "cropType" : "Onions",
+    "description": "Farm in Saint-Pie, Quebec",
+    "date" : "2022-10-30",
+    "address" : "423 Grand rang Saint-François, Saint-Pie, QC J0H 1W0",
+    "servingFoodBank" : "Le Carrefour Familial de Sainte-Julie",
+    "servingFoodBankAddress" : "461 Bd Saint-Joseph local 93, Sainte-Julie, QC J3E 0A8",
+    "capacity" : 13,
+    "remainingSpots" : 9
+  },  
+  {
+    "farmName" : "Les Fermes Sergakis",
+    "cropType" : "Spinach",
+    "description": "Farm in Québec",
+    "date" : "2022-11-04",
+    "address" : "102 Rang de la Montagne, Rougemont, QC J0L 1M0",
+    "servingFoodBank" : "Centre d'Entraide Maskoutain, La Main Qui Nourrit",
+    "servingFoodBankAddress" : "405 Bd Laurier O, Sainte-Madeleine, QC J0H 1S",
+    "capacity" : 15,
+    "remainingSpots" : 1
+  },
+  {
+    "farmName" : "Fermes Avicole",
+    "cropType" : "Potatoes",
+    "description": "Farm in Québec",
+    "date" : "2022-11-05",
+    "address" : "118 Rang Saint-Joseph, Saint-Chrysostome, QC J0S 1R0",
+    "servingFoodBank" : "Service D'Action Benevole",
+    "servingFoodBankAddress" : "262 Rue de l'Église, Napierville, QC J0J 1L0",
+    "capacity" : 20,
+    "remainingSpots" : 19
+  }
+]
