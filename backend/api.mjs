@@ -8,9 +8,40 @@ const app = express()
 app.get('/all', (req, res) => {
   res.json(data)
 })
+
+// field is key name and type is either asc or desc
+app.get('/sort/:field/:type', (req, res) => {
+  const sortField = req.params.field
+  const sortType = req.params.type
+  // To pass deep copy of array of objects
+  const returnData = JSON.parse(JSON.stringify(data))
+  if(validateParams(sortField, sortType)) {
+    console.log("reached here")
+    returnData.sort((a,b) => (a[sortField] > b[sortField]) ? 1 : ((b[sortField] > a[sortField]) ? -1 : 0))
+    if(sortType == 'desc') {
+      returnData.reverse()
+    } 
+    res.json(returnData)
+  } else {
+    res.status(404).send("Invalid field or sort type. Sort field must be: farmName, cropType, description, date, address, servingFoodBank, servingFoodBankAddress, capacity, or remainignSpots.Sort type must be either asc or desc.\nSample url: /date/desc")
+  }
+})
 app.use((req, res, next) => {
   res.status(404).send("Sorry can't find that")
 })
 
 app.listen(3000)
+
+
+function validateParams(sortField, sortType) {
+  const validField = ["farmName", "cropType", "description", "date", "address", "servingFoodBank", "servingFoodBankAddress", "capacity", "remainingSpots"]
+  const validType = ["asc", "desc"]
+  
+  if(validField.includes(sortField) && validType.includes(sortType)) {
+    return true
+  }
+  return false
+}
+
+
 
