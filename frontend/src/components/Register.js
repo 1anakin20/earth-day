@@ -167,6 +167,12 @@ function Register() {
           onClick={register}>
           Register
         </Button>
+        <Button
+          variant={"contained"}
+          color={"warning"}
+          onClick={() => setRole('')}>
+          Back
+        </Button>
       </form>
     </div>
 ) : (
