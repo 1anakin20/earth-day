@@ -9,7 +9,7 @@ import {
 import './index.css';
 
 import App from './App';
-import Register from './components/Register';
+import Register from './components/register/Register';
 import NewPost from "./components/new-post/NewPost";
 import Login from './components/login/login';
 
