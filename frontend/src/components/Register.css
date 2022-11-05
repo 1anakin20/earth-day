@@ -2,16 +2,17 @@ html {
   background-image: url(https://raw.githubusercontent.com/1anakin20/earth-day/login/frontend/src/images/field_1.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 127vh;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
 }
 
 .register {
-  height: 100vh;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 120px 0;
+  padding: 10em 0;
 }
 
 .register__container {
