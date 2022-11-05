@@ -107,6 +107,8 @@ function Register() {
         onChange={(e) => setPassword(e.target.value)}
       />
 
+      <p>By clicking Register, you agree to the Gleanful <a href=''>User Agreement</a>, <a href=''>Privacy Policy</a>, and <a href=''>Cookie Policy</a>.</p>
+
       <button onClick={register}>
         Register
       </button>
