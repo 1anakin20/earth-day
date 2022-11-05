@@ -7,9 +7,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 import ResponsiveAppBar from "./ResponsiveAppBar";
-
-import Button from "@mui/material/Button";
-import { Card, AppBar } from "@mui/material";
+import {Card} from "@mui/material";
 
 export default function Landing() {
   return (
