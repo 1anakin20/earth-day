@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { Link } from "react-router-dom";
+
 import './Register.css';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 function Register() {
-  const [role, setRole] = useState('gleaner');
+  const [role, setRole] = useState('');
   const [foodBankName, setFoodBankName] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -22,100 +25,104 @@ function Register() {
     if (!password) alert('Please enter your password');
   };
 
-  return (
+  return role ? (
     <form>
       {role === 'foodBank' && (
         <>
-          <label>Food Bank Name </label>
-          <input
+          <TextField
             type='text'
             value={foodBankName}
             onChange={(e) => setFoodBankName(e.target.value)}
-            placeholder='Sam Food Bank'
+            placeholder='Food Bank Name'
           />
         </>
       )}
 
-      <label>First Name </label>
-      <input
+      <TextField
         type='text'
         value={firstName}
         onChange={(e) => setFirstName(e.target.value)}
-        placeholder='John'
+        placeholder='First Name'
+        focused
       />
 
-      <label>Last Name </label>
-      <input
+      <TextField
         type='text'
         value={lastName}
         onChange={(e) => setLastName(e.target.value)}
-        placeholder='Smith'
+        placeholder='Last Name'
       />
 
-      <label>Address </label>
-      <input
+      <TextField
         type='text'
         value={address}
         onChange={(e) => setAddress(e.target.value)}
-        placeholder='555 First Street'
+        placeholder='Address'
       />
 
-      <label>City </label>
-      <input
+      <TextField
         type='text'
         value={city}
         onChange={(e) => setCity(e.target.value)}
-        placeholder='Montreal'
+        placeholder='City'
       />
 
-      <label>Province </label>
-      <input
+      <TextField
         type='text'
         value={province}
         onChange={(e) => setProvince(e.target.value)}
-        placeholder='Quebec'
+        placeholder='Province'
       />
 
-      <label>E-mail </label>
-      <input
+      <TextField
         type='email'
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder='john.smith@email.ca'
+        placeholder='Email'
       />
 
-      <label>Phone # </label>
-      <input
+      <TextField
         type='text'
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
-        placeholder='1-514-999-9999'
+        placeholder='Phone #'
       />
 
-      <label>Availability </label>
-      <input
+      <TextField
         type='text'
         value={availability}
         onChange={(e) => setAvailability(e.target.value)}
-        placeholder='Aug 5 - Aug 8 from 9 AM to 5 PM'
+        placeholder='Availability'
       />
 
-      <label>Password </label>
-      <input
+      <TextField
         type='password'
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        placeholder='Password'
       />
 
       <p>By clicking Register, you agree to the Gleanful <a href=''>User Agreement</a>, <a href=''>Privacy Policy</a>, and <a href=''>Cookie Policy</a>.</p>
 
-      <button onClick={register}>
+      <Button onClick={register}>
         Register
-      </button>
+      </Button>
 
       <p>Already have an account? <Link to="/">Login</Link> now.</p>
     </form>
-  );
-}
+): (
+  <section>
+    <p>Please select the account type</p>
+    <Button onClick={() => setRole('gleaner')}>
+      Gleaner
+    </Button>
+    <Button onClick={() => setRole('farmer')}>
+      Farmer
+    </Button>
+    <Button onClick={() => setRole('foodBank')}>
+      Food Bank
+    </Button>
+  </section>
+)}
 
 export default Register;
