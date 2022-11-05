@@ -11,7 +11,6 @@ function Login() {
             <h1><span className={"black"}>Glean</span><span className={"green"}>ful</span></h1>
             <p>Don't have an account?</p>
             <Link href="#" underline="none">Register</Link>
-            {/*<hr className={"register__separation"}/>*/}
             <Divider variant={"middle"} className={"register__separation"}>
                 <Chip label={"Or login"} color={"default"}/>
             </Divider>
