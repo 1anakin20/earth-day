@@ -7,12 +7,13 @@ import TextField from "@mui/material/TextField";
 import {useEffect, useState} from "react";
 import ResponsiveAppBar from "../ResponsiveAppBar";
 import {auth, signInWithEmailAndPassword, signInWithGoogle} from "../../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {useNavigate} from "react-router-dom";
 
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [invalidCredentials, setInvalidCredentials] = useState(false);
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
 
@@ -49,10 +50,15 @@ function Login() {
                             autoComplete="current-password"
                             variant="outlined"
                             onChange={(e) => setPassword(e.target.value)}/>
+                        {invalidCredentials && <p className={"login__error"}>Invalid credentials</p>}
                         <Button
                             variant={"contained"}
                             className="login__btn"
-                            onClick={() => signInWithEmailAndPassword(username, password)}>
+                            onClick={() => {
+                                signInWithEmailAndPassword(auth, username, password).catch((error) => {
+                                    setInvalidCredentials(true);
+                                });
+                            }}>
                             Login
                         </Button>
                         <Button className="login__btn login__google" onClick={signInWithGoogle} variant={"contained"}>

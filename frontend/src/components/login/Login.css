@@ -31,6 +31,10 @@
     gap: 10px;
 }
 
+.login__error {
+    color: red;
+}
+
 .black {
     color: black;
 }
