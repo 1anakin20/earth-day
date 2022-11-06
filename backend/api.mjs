@@ -33,6 +33,12 @@ app.get('/post/all', (req, res) => {
     res.json(postsData)
 })
 
+app.get('/post/:id', (req, res) => {
+    const id = req.params.id
+    const returnData = postsData.filter(post => post.id .toString() === id)
+    res.json(returnData)
+})
+
 app.use((req, res) => {
     res.status(404).send("Sorry can't find that")
 })
