@@ -1,0 +1,13 @@
+a {
+  text-decoration: none;
+  background-color: #55A630;
+  color: white;
+}
+
+button {
+  background-color: #55A630;
+}
+
+.details__container {
+  background-color: #dcdcdc;
+}
