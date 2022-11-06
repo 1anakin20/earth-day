@@ -33,7 +33,7 @@ const NewPost = () => {
     return (
         <div>
             <ResponsiveAppBar />
-            <form onSubmit={handleSubmit} id={"form"}>
+            <form onSubmit={handleSubmit} id={"form"} className={"new_post__background"}>
                 <Grid className={"form__grid"} container alignItems="center" justify="center" direction="column">
                     <Grid item className={"fieldset"}>
                         <p>Farm</p>
