@@ -48,6 +48,11 @@ function Profile() {
                 <p> <b>Foods collected </b></p>
                 <p> User's foods</p>
             </div>
+            <Button
+                variant={"contained"}
+                className="modify__btn">
+                Modify Profile
+            </Button>
         </div>
     </div>);
 }
