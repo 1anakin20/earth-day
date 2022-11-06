@@ -28,6 +28,9 @@
     background-color: #dcdcdc;
     padding: 30px 100px;
     gap: 5px;
+    overflow-y: scroll;
+    height: 80%;
+
     
 }
 
