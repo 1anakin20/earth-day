@@ -6,6 +6,7 @@ import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
 import {useState} from "react";
 import ResponsiveAppBar from "../ResponsiveAppBar";
+import YardIcon from "@mui/icons-material/Yard";
 
 function Login() {
     const [username, setUsername] = useState("");
@@ -14,12 +15,16 @@ function Login() {
     return (
         <div className="login__root">
             <div className="login__content">
-                <ResponsiveAppBar/>
                 <div className="login">
                     <div className="login__container">
-                        <h1><span className={"black"}>Glean</span><span className={"green"}>ful</span></h1>
+                        <h1 className='app_name'>
+                            <Link href="/" underline='none'>
+                                <span className={"green"}><YardIcon /></span>
+                                <span className={"black"}> GLEAN</span><span className={"green"}>ful</span>
+                            </Link>
+                        </h1>
                         <p>Don't have an account?</p>
-                        <Link href="#" underline="none">Register</Link>
+                        <Link href="register" underline="none">Register</Link>
                         <Divider variant={"middle"} className={"register__separation"}>
                             <Chip label={"Or login"} color={"default"}/>
                         </Divider>
