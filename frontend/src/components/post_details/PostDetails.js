@@ -1,9 +1,11 @@
 import "./PostDetails.css";
 import Button from '@mui/material/Button';
+// import ResponsiveAppBar from "../ResponsiveAppBar";
+// import { FaArrowLeft } from 'react-icons/fa';
+// import {useNavigate} from "react-router-dom";
 import ResponsiveAppBar from "../ResponsiveAppBar";
-import React from "react";
-import { FaArrowLeft } from 'react-icons/fa';
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+import {FaArrowLeft} from "react-icons/fa";
 
 function PostDetails() {
 
@@ -21,6 +23,9 @@ function PostDetails() {
 
         <div className="posts__details">
             <div className="details__container">
+            <Button className="back__btn" onClick={homeRoute}>
+            <FaArrowLeft />
+            </Button>
               <h1>Post Details</h1>
               <div className="details">
                   <p>Farm: </p>
@@ -51,12 +56,6 @@ function PostDetails() {
                   <p>8</p>
                   </div>
                 
-                  <Button
-                      variant={"contained"}
-                      className="back__btn"
-                      onClick={homeRoute}>
-                      Back
-                  </Button>
             </div>
       </div>
       </div>

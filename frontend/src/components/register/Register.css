@@ -1,4 +1,4 @@
-html {
+.register__root {
   background-image: url(../../../src/images/field_1.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -25,10 +25,14 @@ html {
   gap: 10px;
 }
 
+.app_name {
+  font-family: "monospace";
+}
+
 .black {
   color: black;
 }
 
 .green {
-  color: green;
+  color: #55A630;
 }

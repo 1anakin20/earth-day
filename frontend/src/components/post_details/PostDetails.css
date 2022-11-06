@@ -37,3 +37,10 @@
   justify-content: space-between;
   gap: 75px;
 }
+
+.back__btn{
+  display: flex;
+  width: 10px;
+  margin: 0px;
+  justify-content: left;
+}

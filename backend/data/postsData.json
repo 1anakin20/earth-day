@@ -1,0 +1,50 @@
+[
+  {
+	"farm": "Marvin's Farm",
+	"cropType": "Potatoes",
+	"description": "Very Good Farm",
+	"date": "2022-10-24",
+	"address": "231 rue FarmVille",
+	"foodBank": "Super Food Bank",
+	"capacity": 20,
+	"urgent": true,
+	"remaining": 10,
+	"id": 1
+  },
+  {
+	"farm": "Bill's Farm",
+	"cropType": "Corn",
+	"description": "have the best corn in the world",
+	"date": "2022-11-04",
+	"address": "24 rue eastWood",
+	"foodBank": "Millers food and CO",
+	"capacity": 100,
+	"urgent": true,
+	"remaining": 76,
+	"id": 2
+  },
+  {
+	"farm": "Claire's",
+	"cropType": "Pumpkins",
+	"description": "So many pumpkins",
+	"date": "2022-11-06",
+	"address": "456 AtWood Street",
+	"foodBank": "halloween food bank",
+	"capacity": 54,
+	"urgent": false,
+	"remaining": 2,
+	"id": 3
+  },
+  {
+	"farm": "Claire's Second Farm",
+	"cropType": "Pumpkins",
+	"description": "So many pumpkins",
+	"date": "2022-11-06",
+	"address": "456 AtWood Street",
+	"foodBank": "halloween food bank",
+	"capacity": 54,
+	"remaining": 15,
+	"urgent": false,
+	"id": 4
+  }
+]
