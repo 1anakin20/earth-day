@@ -1,17 +1,13 @@
 import "./PostDetails.css";
 import Button from '@mui/material/Button';
-// import ResponsiveAppBar from "../ResponsiveAppBar";
-// import { FaArrowLeft } from 'react-icons/fa';
-// import {useNavigate} from "react-router-dom";
 import ResponsiveAppBar from "../ResponsiveAppBar";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-import {useQuery} from "react-query";
-import * as API from "../../api/requestAPI";
+import {getPostById} from "../../database/database";
 
 function PostDetails() {
     const {postID} = useParams()
-    const {data, error, isError, isLoading} = useQuery('posts', async () => API.getPost(postID))
+    const [post, setPost] = useState({})
     let navigate = useNavigate();
     // when back arrow is clicked, user is redirected to the home page
     const homeRoute = () => {
@@ -19,14 +15,19 @@ function PostDetails() {
         navigate(path);
     };
 
-    if (isLoading) {
-        return <div>Loading...</div>
-    }
-    if (isError) {
-        return <div>Error: {error.message}</div>
+    const getPost = async (id) => {
+        const data = await getPostById(id)
+        setPost(data)
+        console.log(data)
     }
 
-    const post = data[0];
+    useEffect(() => {
+        if (post === {}) {
+            return;
+        }
+        getPost(postID)
+    })
+
     let urgent
     if (post.urgent) {
         urgent = <h2 className="urgent">Urgent</h2>

@@ -28,6 +28,11 @@ function Post(props) {
         console.log(posts)
     }
 
+    const getPostByID = async (id) => {
+        const fetchedPost = await getPostByID(id);
+        console.log(fetchedPost);
+    }
+
     useEffect(() => {
         if (props.postID === "all") {
             if (posts.length === 0) {

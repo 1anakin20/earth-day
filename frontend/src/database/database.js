@@ -177,3 +177,9 @@ export async function getAllPosts() {
     return data.val()
 }
 
+export async function getPostById(postId) {
+    const db = getDatabase();
+    let data = await get(child(dbRef, 'posts/' + postId))
+    return data.val()
+}
+
