@@ -4,15 +4,10 @@ import Button from '@mui/material/Button';
 // import { FaArrowLeft } from 'react-icons/fa';
 // import {useNavigate} from "react-router-dom";
 import ResponsiveAppBar from "../ResponsiveAppBar";
-<<<<<<< HEAD
-import {useNavigate} from "react-router-dom";
-import {FaArrowLeft} from "react-icons/fa";
-=======
 import React from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {useQuery} from "react-query";
 import * as API from "../../api/requestAPI";
->>>>>>> ba2556b819c6f2b8d1dd9481139784e0b43d0d3c
 
 function PostDetails() {
     const {postID} = useParams()
@@ -74,43 +69,6 @@ function PostDetails() {
                             <p>{post.capacity}</p>
                         </div>
 
-<<<<<<< HEAD
-        <div className="posts__details">
-            <div className="details__container">
-            <Button className="back__btn" onClick={homeRoute}>
-            <FaArrowLeft />
-            </Button>
-              <h1>Post Details</h1>
-              <div className="details">
-                  <p>Farm: </p>
-                  <p>Quinn's Farm</p>
-                  </div>
-                  <div className="details">
-                  <p>Crop Type: </p>
-                  <p>Apples</p>
-                  </div>
-                  <div className="details">
-                  <p>Description: </p>
-                  <p>Look at all them apples</p>
-                  </div>
-                  <div className="details">
-                  <p>Date: </p>
-                  <p>06-11-2022</p>
-                  </div>
-                  <div className="details">
-                  <p>Address: </p>
-                  <p>1234 road</p>
-                  </div>
-                  <div className="details">
-                  <p>Food Bank: </p>
-                  <p>westmount</p>
-                  </div>
-                  <div className="details">
-                  <p>Capacity: </p>
-                  <p>8</p>
-                  </div>
-                
-=======
                         <Button
                             variant={"contained"}
                             className="back__btn"
@@ -119,7 +77,6 @@ function PostDetails() {
                         </Button>
                     </div>
                 </div>
->>>>>>> ba2556b819c6f2b8d1dd9481139784e0b43d0d3c
             </div>
         </div>
     );
