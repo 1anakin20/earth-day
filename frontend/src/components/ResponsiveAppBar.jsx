@@ -15,12 +15,14 @@ import YardIcon from "@mui/icons-material/Yard";
 import SearchIcon from "@mui/icons-material/Search";
 import {alpha, styled} from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
+import { useNavigate } from 'react-router-dom';
 
 const pages = ["Farmers", "FoodBanks"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -28,6 +30,7 @@ function ResponsiveAppBar() {
 
   const handleProfile = (event) => {
     // go to profile page
+    navigate('/profile');
   };
 
   const handleCloseNavMenu = () => {
