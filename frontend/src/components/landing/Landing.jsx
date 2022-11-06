@@ -6,13 +6,13 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
-import ResponsiveAppBar from "./ResponsiveAppBar";
+import ResponsiveAppBar from "../ResponsiveAppBar";
 import Post from "../post/Post";
 
 export default function Landing() {
   return (
     <>
-      <ResponsiveAppBar></ResponsiveAppBar>
+      <ResponsiveAppBar />
 
       <Post></Post>
     </>

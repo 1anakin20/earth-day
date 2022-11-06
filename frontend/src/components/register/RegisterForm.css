@@ -1,0 +1,11 @@
+.register__long {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em 0;
+}
+
+.app_name {
+  font-family: "monospace";
+}

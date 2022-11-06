@@ -1,13 +1,21 @@
-.login {
+.login__root {
     background-image: url(../../images/field_1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
     height: 100vh;
+    width: 100vw;
+}
+
+.login__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .login {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,6 +29,10 @@
     background-color: #dcdcdc;
     padding: 30px 100px;
     gap: 10px;
+}
+
+.app_name {
+    font-family: "monospace";
 }
 
 .black {
