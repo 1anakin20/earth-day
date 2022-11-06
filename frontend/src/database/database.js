@@ -1,7 +1,9 @@
 import {initializeApp} from 'firebase/app';
 import {getDatabase, ref, set, child, update, onValue, push, remove, get} from 'firebase/database';
+import {firebaseConfig} from "./firebaseConfig";
 
 const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
 //===========================================================================================
 // 1. add records to database
@@ -10,8 +12,7 @@ const app = initializeApp(firebaseConfig);
 //------------------------------add gleaner---------------------------------------------//
 
 function writeGleanerData(firstName, lastName, address, city, province, email, phone, groupSize, availability, password) {
-    const db = getDatabase(app);
-    // const reference = ref(db, 'gleaner/' + userId); 
+    // const reference = ref(db, 'gleaner/' + userId);
 
     const ListRef = ref(db, 'gleaner');
     const newRef = push(ListRef);
@@ -95,15 +96,22 @@ function writeFoodbankData(FoodbankName, firstName, lastName, address, city, pro
 
 //create gleaning post---------------------------------------------//
 
-function createGleaningPost(farmId, description, gleanerList) {
+export function createGleaningPost(farmId, cropType, description, date, address, foodBank, capacity, urgent) {
     const db = getDatabase();
     const postListRef = ref(db, 'posts');
     const newPostRef = push(postListRef);
     set(newPostRef, {
-        farmId: farmId,
+        id: newPostRef.key,
+        farm: farmId,
+        cropType: cropType,
         description: description,
-        gleanerList: gleanerList
-
+        date: date,
+        address: address,
+        foodBank: foodBank,
+        capacity: capacity,
+        remaining: capacity,
+        urgent: urgent,
+        gleanerList: [],
     });
 }
 
@@ -152,7 +160,7 @@ get(child(dbRef, 'gleaner/')).then((snapshot) => {
 
 //------------------------------remove record---------------------------------------------//
 
-function deleteDate() {
+function deleteDate(gleanId) {
     remove(ref(db, "gleaner/" + gleanId))
         .then(() => {
             alert("data removed successfully");
@@ -160,5 +168,12 @@ function deleteDate() {
         .catch((error) => {
             alert("unsuccessful, error" + error);
         });
+}
+
+// ------------------------------ get posts ---------------------------------------------//
+export async function getAllPosts() {
+    const db = getDatabase();
+    let data = await get(child(dbRef, 'posts/'))
+    return data.val()
 }
 

@@ -1,22 +1,40 @@
 import "./Post.css";
 import {Box, Button, Card, Grid} from "@mui/material";
 import {flexbox} from "@mui/system";
-import * as API from "../../api/requestAPI";
-import {useQuery} from 'react-query'
 import {useNavigate} from "react-router-dom";
+import {getAllPosts} from "../../database/database";
+import {useEffect, useState} from "react";
 
 function Post(props) {
-    const {data, error, isError, isLoading } = useQuery('posts', async () => API.getPost(props.postID))
+    const [posts, setPosts] = useState([]);
     const navigateToPost = useNavigate()
 
-    if (isLoading) {
-        return <div>Loading...</div>
-    }
-    if (isError) {
-        return <div>Error: {error.message}</div>
+    const getPosts = async () => {
+        const fetchedPosts = await getAllPosts();
+        console.log(fetchedPosts);
+        for (const key in fetchedPosts) {
+            console.log(key)
+            // Check if post isn't already there
+            if (!posts.some(post => post.id === key)) {
+                setPosts(prevPosts => {
+                    if (!prevPosts.some(post => post.id === key)) {
+                        return [...prevPosts, fetchedPosts[key]]
+                    } else {
+                        return [...prevPosts]
+                    }
+                })
+            }
+        }
+        console.log(posts)
     }
 
-    const posts = data;
+    useEffect(() => {
+        if (props.postID === "all") {
+            if (posts.length === 0) {
+                getPosts()
+            }
+        }
+    })
 
     // click event to take user to post details
     const handlePostClick = (event) => {
