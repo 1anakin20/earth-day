@@ -12,6 +12,11 @@ import App from './App';
 import Register from './components/register/Register';
 import NewPost from "./components/new-post/NewPost";
 import Login from './components/login/login';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import Profile from './components/profile/profile';
 import PostDetails from './components/post_details/PostDetails';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -24,6 +29,7 @@ root.render(<React.StrictMode>
         <Route path='/post_details' element={<PostDetails />}/>
         <Route path='/' element={<App/>}/>
         <Route path='*' element={<Navigate to='/'/>}/>
+        <Route path='/profile' element={<Profile/>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
