@@ -17,7 +17,7 @@ import {alpha, styled} from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { useNavigate } from 'react-router-dom';
 
-const pages = ["Farmers", "FoodBanks"];
+const pages = ["Farmers", "FoodBanks",];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
@@ -162,6 +162,11 @@ function ResponsiveAppBar() {
               />
             </Search>
           </Box>
+            <Box>
+                <Button variant={"contained"} style={{marginRight: 10, backgroundColor: "white", color: "black"}} onClick={() => navigate('/new_post')}>
+                    Create post
+                </Button>
+            </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Profile">
               <IconButton onClick={handleProfile} sx={{ p: 0 }}>
