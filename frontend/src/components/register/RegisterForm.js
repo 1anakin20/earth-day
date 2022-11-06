@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './RegisterForm.css';
 import Button from '@mui/material/Button';
@@ -12,6 +13,7 @@ import YardIcon from "@mui/icons-material/Yard";
 function RegisterForm(props) {
     const {role, username, setRole, setUsername} = props;
 
+    const navigate = useNavigate();
     const [farmName, setFarmName] = useState('');
     const [foodBankName, setFoodBankName] = useState('');
     const [firstName, setFirstName] = useState('');
@@ -27,10 +29,8 @@ function RegisterForm(props) {
     const [capacity, setCapacity] = useState('');
 
     const register = () => {
-        if (!firstName) alert('Please enter your first name');
-        if (!lastName) alert('Please enter your last name');
-        if (!username) alert('Please enter your e-mail');
-        if (!password) alert('Please enter your password');
+        // Check required fields are filled
+        navigate('/');
     };
 
     return (
