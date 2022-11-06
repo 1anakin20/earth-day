@@ -6,20 +6,40 @@ import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
 import {useState} from "react";
 import defaultProfilePic from '../../images/avatar/Default_pfp.png';
+import { FaArrowLeft } from 'react-icons/fa';
+
 
 function Profile() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     return (<div className="login">
-        <div className="login__container">
-            <h1> Profile </h1>
+        <div className="profile__container">
+        <Button id="back_btn">
+        <FaArrowLeft />
+        </Button>
+            <h1 id="profile_tag"> Profile </h1>
             <img src={defaultProfilePic} alt="Profile Picture" id="profilePic" />
-            <h5> Username </h5>
-            <h5> Email </h5>
-            <h5> Location </h5>
-            <h5> Events participated </h5>
-            <h5> Foods collected </h5> 
+            <div className="info">
+                <p> <b>Username </b></p>
+                <p> User's username</p>
+            </div>
+            <div className="info">
+                <p> <b>Email </b></p>
+                <p> User's email</p>
+            </div>
+            <div className="info">
+                <p> <b>Location</b></p>
+                <p> User's location</p>
+            </div>
+            <div className="info">
+                <p> <b>Events participated </b></p>
+                <p> User's events</p>
+            </div>
+            <div className="info">
+                <p> <b>Foods collected </b></p>
+                <p> User's foods</p>
+            </div>
         </div>
     </div>);
 }

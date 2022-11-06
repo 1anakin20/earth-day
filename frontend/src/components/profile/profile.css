@@ -1,38 +1,39 @@
-.login {
-    background-image: url(../../images/field_1.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
-}
-
-.login {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.login__container {
+.profile__container {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    text-align: center;
+    text-align: left;
     background-color: #dcdcdc;
     padding: 30px 100px;
-    gap: 10px;
+    gap: 5px;
+    
 }
 
-.black {
-    color: black;
+#profile_tag{
+    text-align: center;
 }
-
-.green {
-    color: green;
+#back_btn{
+    display: flex;
+    width: 10px;
+    margin: 0px;
+    justify-content: left;
 }
 
 #profilePic{
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     visibility: visible;
+    background-color: gray;
+    border-radius: 55%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.info{
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+
 }

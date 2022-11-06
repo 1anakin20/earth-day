@@ -5,6 +5,7 @@ import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
 import {useState} from "react";
+import {FaArrowLeft } from 'react-icons/fa';
 
 function Login() {
     const [username, setUsername] = useState("");
@@ -34,7 +35,7 @@ function Login() {
             <Button
                 variant={"contained"}
                 className="login__btn">
-                Login
+                arrow left
             </Button>
             <Link to={'/reset'}>Forgot password?</Link>
         </div>
