@@ -1,13 +1,13 @@
 import "./Post.css";
-import {useState} from "react";
 import {Box, Button, Card, Grid} from "@mui/material";
 import {flexbox} from "@mui/system";
 import * as API from "../../api/requestAPI";
 import {useQuery} from 'react-query'
+import {useNavigate} from "react-router-dom";
 
 function Post(props) {
-    const [currentPost, setCurrentPost] = useState(null);
     const {data, error, isError, isLoading } = useQuery('posts', async () => API.getPost(props.postID))
+    const navigateToPost = useNavigate()
 
     if (isLoading) {
         return <div>Loading...</div>
@@ -22,10 +22,7 @@ function Post(props) {
     const handlePostClick = (event) => {
         console.log(event.currentTarget.id);
         console.log(event.currentTarget);
-        setCurrentPost(event.currentTarget.id);
-        setCurrentPost({
-            currentPost: event.currentTarget.id,
-        });
+        navigateToPost(`/post_details/${event.currentTarget.id}`)
     };
     return (
         <>
