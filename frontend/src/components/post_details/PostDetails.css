@@ -1,14 +1,39 @@
-a {
-  text-decoration: none;
-  background-color: #55A630;
-  color: white;
+.details__root {
+  background-image: url(../../images/field_1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100vw;
 }
 
-button {
-  background-color: #55A630;
+.details__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-
+.posts__details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 .details__container {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
   background-color: #dcdcdc;
+  padding: 20px 90px;
+  overflow-y: scroll;
+  height: 70%;
+}
+
+.details{
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  gap: 75px;
 }
