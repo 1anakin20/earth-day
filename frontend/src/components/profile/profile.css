@@ -29,9 +29,7 @@
     padding: 30px 100px;
     gap: 5px;
     overflow-y: scroll;
-    height: 80%;
-
-    
+    height: 65%;
 }
 
 #profile_tag{
@@ -45,8 +43,8 @@
 }
 
 #profilePic{
-    height: 150px;
-    width: 150px;
+    height: 55%;
+    width: 55%;
     visibility: visible;
     background-color: gray;
     border-radius: 55%;
