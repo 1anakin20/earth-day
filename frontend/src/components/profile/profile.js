@@ -7,15 +7,23 @@ import TextField from "@mui/material/TextField";
 import {useState} from "react";
 import defaultProfilePic from '../../images/avatar/Default_pfp.png';
 import { FaArrowLeft } from 'react-icons/fa';
+import { useNavigate } from "react-router-dom";
 
 
 function Profile() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    let navigate = useNavigate(); 
+    const routeChange = () =>{ 
+    let path = `..\.`; 
+    navigate(path);
+  }
+  
+
     return (<div className="login">
         <div className="profile__container">
-        <Button id="back_btn">
+        <Button id="back_btn" onClick={routeChange}>
         <FaArrowLeft />
         </Button>
             <h1 id="profile_tag"> Profile </h1>
