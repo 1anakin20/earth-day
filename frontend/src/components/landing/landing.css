@@ -1,3 +1,18 @@
+.landing__background {
+  background-image: url(../../images/field_1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.landing__long {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em 0;
+}
+
 .logo-green {
   color: #238311;
 }

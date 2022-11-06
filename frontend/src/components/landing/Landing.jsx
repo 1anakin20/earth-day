@@ -11,10 +11,13 @@ import Post from "../post/Post";
 
 export default function Landing() {
   return (
-    <>
+    <div>
       <ResponsiveAppBar />
-
-      <Post postID={"all"}></Post>
-    </>
+      <div className={"landing__background"}>
+        <div className="landing__long">
+          <Post postID={"all"} />
+        </div>
+      </div>
+    </div>
   );
 }
