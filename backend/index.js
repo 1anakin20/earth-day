@@ -1,18 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set, onValue, push, remove} from 'firebase/database';  
-
-
-const firebaseConfig = {
-    apiKey: "AIzaSyBSCJjXkCl7zH26AOle7xSO_lrJmMyl1hw",
-    authDomain: "earth-day-9d912.firebaseapp.com",
-    databaseURL: "https://earth-day-9d912-default-rtdb.firebaseio.com",
-    projectId: "earth-day-9d912",
-    storageBucket: "earth-day-9d912.appspot.com",
-    messagingSenderId: "296094286428",
-    appId: "1:296094286428:web:e425b2fafaef3b828c5c99",
-    measurementId: "G-633FC55T5Y"
-
-};
+import { getDatabase, ref, set, onValue, push, remove} from 'firebase/database';
+import {firebaseConfig} from './firebaseConfig.js';
 
 const app = initializeApp(firebaseConfig);
 
