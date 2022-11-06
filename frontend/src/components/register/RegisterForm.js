@@ -7,6 +7,8 @@ import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
 
+import YardIcon from "@mui/icons-material/Yard";
+
 function RegisterForm(props) {
   const { role, username, setRole, setUsername } = props;
 
@@ -34,7 +36,12 @@ function RegisterForm(props) {
   return (
     <div className="register__long">
       <form className="register__container">
-        <h1><span className={"black"}>Glean</span><span className={"green"}>ful</span></h1>
+        <h1 className='app_name'>
+          <Link href="/" underline='none'>
+            <span className={"green"}><YardIcon /></span>
+            <span className={"black"}> GLEAN</span><span className={"green"}>ful</span>
+          </Link>
+        </h1>
         <p>Already have an account?</p>
         <Link href="login" underline="none">Login</Link>
         <Divider variant={"middle"} className={"login__separation"}>
