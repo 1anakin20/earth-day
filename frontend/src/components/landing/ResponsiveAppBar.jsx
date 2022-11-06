@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import YardIcon from "@mui/icons-material/Yard";
 import SearchIcon from "@mui/icons-material/Search";
-import {alpha, styled} from "@mui/material/styles";
+import { alpha, styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 
 const pages = ["Farmers", "FoodBanks"];
@@ -97,7 +97,7 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            GLEAN
+            Glean<b className="logo-green">ful</b>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
