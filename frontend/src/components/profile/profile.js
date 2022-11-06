@@ -4,17 +4,26 @@ import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
-import {useState} from "react";
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+import { useState } from "react";
 import defaultProfilePic from '../../images/avatar/Default_pfp.png';
 import { FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
 import ResponsiveAppBar from "../ResponsiveAppBar";
 import React from "react";
 
-
 function Profile() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [interest, setInterest] = useState("");
+    const [chipData, setChipData] = React.useState([
+        { key: 0, label: 'Potato' },
+        { key: 1, label: 'Apple' },
+        { key: 2, label: 'Strawberry' },
+        { key: 3, label: 'grape' },
+        { key: 4, label: 'cherry' },
+      ]);
 
     const handleImageUpload = e => {
        // not implemented
@@ -23,10 +32,18 @@ function Profile() {
 
     // when back arrow is clicked, user is redirected to the home page
     let navigate = useNavigate(); 
-    const routeChange = () =>{ 
-    let path = `..\.`; 
-    navigate(path);
-  }
+    const routeChange = () => { 
+        let path = `..\.`; 
+        navigate(path);
+    }
+
+    const ListItem = styled('li')(({ theme }) => ({
+        margin: theme.spacing(0.5),
+    }));
+
+    const handleDelete = (chipToDelete) => () => {
+        setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
+    };
 
     return (
         <div className="profile__root">
@@ -78,6 +95,39 @@ function Profile() {
                     <p> <b>Foods collected </b></p>
                     <p> User's foods</p>
                 </div>
+                <TextField
+                    label="Interested produce"
+                    type='text'
+                    value={interest}
+                    onChange={(e) => setInterest(e.target.value)}
+                    placeholder='Carrot'
+                />
+                <Paper
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        flexWrap: 'wrap',
+                        listStyle: 'none',
+                        p: 0.8,
+                        m: 0
+                    }}
+                    component="ul"
+                >
+                    {chipData.map((data) => {
+                        let icon;
+
+                        return (
+                        <ListItem key={data.key}>
+                            <Chip
+                            icon={icon}
+                            label={data.label}
+                            onDelete={handleDelete(data)}
+                            />
+                        </ListItem>
+                        );
+                    })}
+                </Paper>
+                <br/>
                 {/* This button is not handled yet. Would allow the user to modify their info */}
                 <Button
                     variant={"contained"}

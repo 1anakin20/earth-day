@@ -7,14 +7,14 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 import ResponsiveAppBar from "../ResponsiveAppBar";
-import {Card} from "@mui/material";
+import Post from "../post/Post";
 
 export default function Landing() {
   return (
     <>
       <ResponsiveAppBar />
 
-      <Card variant="outlined">Posts go here</Card>
+      <Post postID={"all"}></Post>
     </>
   );
 }
