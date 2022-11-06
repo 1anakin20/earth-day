@@ -9,20 +9,25 @@ import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
 
 import YardIcon from "@mui/icons-material/Yard";
+import ResponsiveAppBar from "../ResponsiveAppBar";
 
 function Register() {
     const [role, setRole] = useState('');
     const [username, setUsername] = useState('');
 
     return role ? (
+        <div>
+            <ResponsiveAppBar/>
             <RegisterForm
                 role={role}
                 username={username}
                 setRole={setRole}
                 setUsername={setUsername}
             />
+        </div>
     ) : (
         <div className="register__root">
+            <ResponsiveAppBar />
             <div className="register">
                 <section className="register__container">
                     <h1 className='app_name'>
