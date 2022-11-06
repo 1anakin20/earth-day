@@ -43,10 +43,11 @@ function RegisterForm(props) {
         {role === 'farmer' && (
           <>
             <TextField
+              label="Farm Name"
               type='text'
               value={farmName}
               onChange={(e) => setFarmName(e.target.value)}
-              placeholder='Farm Name'
+              placeholder='Plentiful Farm'
             />
           </>
         )}
@@ -54,84 +55,94 @@ function RegisterForm(props) {
         {role === 'foodBank' && (
           <>
             <TextField
+              label="Food Bank Name"
               type='text'
               value={foodBankName}
               onChange={(e) => setFoodBankName(e.target.value)}
-              placeholder='Food Bank Name'
+              placeholder='Jim Food Bank'
             />
           </>
         )}
 
         <TextField
+          label="First Name"
           type='text'
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
-          placeholder='First Name'
+          placeholder='John'
         />
 
         <TextField
+          label="Last Name"
           type='text'
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
-          placeholder='Last Name'
+          placeholder='Smith'
         />
 
         <TextField
+          label="Address"
           type='text'
           value={address}
           onChange={(e) => setAddress(e.target.value)}
-          placeholder='Address'
+          placeholder='5555 First Street'
         />
 
         <TextField
+          label="City"
           type='text'
           value={city}
           onChange={(e) => setCity(e.target.value)}
-          placeholder='City'
+          placeholder='Montreal'
         />
 
         <TextField
+          label="Province"
           type='text'
           value={province}
           onChange={(e) => setProvince(e.target.value)}
-          placeholder='Province'
+          placeholder='Quebec'
         />
 
         <TextField
+          label="Email"
           type='email'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          placeholder='Email'
+          placeholder='john.smith@email.ca'
         />
 
         <TextField
+          label="Phone #"
           type='text'
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
-          placeholder='Phone #'
+          placeholder='1-514-999-9999'
         />
 
         <TextField
+          label="Availability"
           type='text'
           value={availability}
           onChange={(e) => setAvailability(e.target.value)}
-          placeholder='Availability'
+          placeholder='Aug 5 - Aug 8 from 9 AM to 5 PM'
         />
 
         <TextField
+          label="Password"
           type='password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder='Password'
         />
 
         {role === 'gleaner' && (
           <>
             <TextField
+              label="Group size (minimum of 5)"
               type='number'
               value={groupSize}
               onChange={(e) => setGroupSize(e.target.value)}
-              placeholder='Group size (minimum of 5)'
+              placeholder='8'
               min={5}
             />
           </>
@@ -140,10 +151,11 @@ function RegisterForm(props) {
         {(role === 'gleaner' || role === 'foodBank') && (
           <>
             <TextField
+              label="Max distance (km)"
               type='number'
               value={maxDistance}
               onChange={(e) => setMaxDistance(e.target.value)}
-              placeholder='Max distance (km)'
+              placeholder='20'
             />
           </>
         )}
@@ -151,10 +163,11 @@ function RegisterForm(props) {
         {(role === 'farmer' || role === 'foodBank') && (
           <>
             <TextField
+              label="Capacity"
               type='number'
               value={capacity}
               onChange={(e) => setCapacity(e.target.value)}
-              placeholder='Capacity'
+              placeholder='25'
             />
           </>
         )}
