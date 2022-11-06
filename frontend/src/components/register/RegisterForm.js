@@ -38,7 +38,7 @@ function RegisterForm(props) {
         <p>Already have an account?</p>
         <Link href="login" underline="none">Login</Link>
         <Divider variant={"middle"} className={"login__separation"}>
-            <Chip label={"Or register"} color={"default"}/>
+          <Chip label={"Or register"} color={"default"}/>
         </Divider>
         {role === 'farmer' && (
           <>

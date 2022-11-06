@@ -22,12 +22,12 @@ function Register() {
   ) : (
     <div className="register">
       <section className="register__container">
-          <h1><span className={"black"}>Glean</span><span className={"green"}>ful</span></h1>
-          <p>Already have an account?</p>
-          <Link href="login" underline="none">Login</Link>
-          <Divider variant={"middle"} className={"login__separation"}>
-              <Chip label={"Or register"} color={"default"}/>
-          </Divider>
+        <h1><span className={"black"}>Glean</span><span className={"green"}>ful</span></h1>
+        <p>Already have an account?</p>
+        <Link href="login" underline="none">Login</Link>
+        <Divider variant={"middle"} className={"login__separation"}>
+          <Chip label={"Or register"} color={"default"}/>
+        </Divider>
         <p>Please select the account type</p>
         <Button
           variant={"contained"}
