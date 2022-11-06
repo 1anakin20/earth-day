@@ -14,7 +14,7 @@ export default function Landing() {
     <>
       <ResponsiveAppBar />
 
-      <Post></Post>
+      <Post postID={"all"}></Post>
     </>
   );
 }
