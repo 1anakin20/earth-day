@@ -1,0 +1,34 @@
+html {
+  background-image: url(../../../src/images/field_1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+.register {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10em 0;
+}
+
+.register__container {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #dcdcdc;
+  padding: 30px 100px;
+  gap: 10px;
+}
+
+.black {
+  color: black;
+}
+
+.green {
+  color: green;
+}
