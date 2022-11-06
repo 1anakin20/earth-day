@@ -25,10 +25,14 @@ html {
   gap: 10px;
 }
 
+.app_name {
+  font-family: "monospace";
+}
+
 .black {
   color: black;
 }
 
 .green {
-  color: green;
+  color: #55A630;
 }

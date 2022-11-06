@@ -95,12 +95,12 @@ function ResponsiveAppBar() {
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              letterSpacing: "0.1rem",
               color: "inherit",
               textDecoration: "none",
             }}
           >
-            GLEAN
+            <span style={{ color: "black" }}>GLEAN</span>ful
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
