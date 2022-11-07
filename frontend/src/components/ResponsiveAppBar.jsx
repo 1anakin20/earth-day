@@ -17,10 +17,12 @@ import {alpha, styled} from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { useNavigate } from 'react-router-dom';
 
-const pages = ["Farmers", "FoodBanks"];
+const pages = ["Farmers", "Food Banks"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar(props) {
+  const {role, username} = props;
+  
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const navigate = useNavigate();
 
@@ -35,6 +37,10 @@ function ResponsiveAppBar() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  const handleLogin = () => {
+    navigate('/login');
   };
 
   const Search = styled("div")(({ theme }) => ({
@@ -162,17 +168,27 @@ function ResponsiveAppBar() {
               />
             </Search>
           </Box>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Profile">
-              <IconButton onClick={handleProfile} sx={{ p: 0 }}>
-                {/* user picture goes here */}
-                <Avatar
-                  alt="Name goes Here"
-                  src="../../images/avatar/Default_pfp.png"
-                />
-              </IconButton>
-            </Tooltip>
-          </Box>
+          {username ? (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Profile">
+                <IconButton onClick={handleProfile} sx={{ p: 0 }}>
+                  {/* user picture goes here */}
+                  <Avatar
+                    alt="Name goes Here"
+                    src="../../images/avatar/Default_pfp.png"
+                  />
+                </IconButton>
+              </Tooltip>
+            </Box>
+          ) : (
+            <Button
+              onClick={handleLogin}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Login
+            </Button>
+          )
+          }
         </Toolbar>
       </Container>
     </AppBar>

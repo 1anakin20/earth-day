@@ -17,7 +17,10 @@ export default function Landing(props) {
     <div className="App">
       <QueryClientProvider client={queryClient}>
         <div>
-          <ResponsiveAppBar />
+          <ResponsiveAppBar
+            role={role}
+            username={username}
+          />
           <div className={"landing__background"}>
             <div className="landing__long">
               <Post postID={"all"} />
