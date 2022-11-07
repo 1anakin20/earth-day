@@ -1,8 +1,10 @@
 import {useState} from "react";
 import Grid from "@mui/material/Grid";
-import {Button, TextareaAutosize, TextField} from "@mui/material";
+import {Button, Checkbox, TextareaAutosize, TextField} from "@mui/material";
 import "./NewPost.css";
 import ResponsiveAppBar from "../ResponsiveAppBar";
+import {createGleaningPost} from "../../database/database";
+import {useNavigate} from "react-router-dom";
 
 const defaultValues = {
     farm: "",
@@ -16,9 +18,11 @@ const defaultValues = {
 
 const NewPost = (props) => {
     const {role, username} = props;
-    
+
     const date = new Date();
     defaultValues.date = date.toISOString().split('T')[0]
+    const navigate = useNavigate()
+    const [isUrgent, setIsUrgent] = useState(false);
 
     const [formValues, setFormValues] = useState(defaultValues);
     const handleInputChange = (e) => {
@@ -30,7 +34,8 @@ const NewPost = (props) => {
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(formValues);
+        createGleaningPost(formValues.farm, formValues.cropType, formValues.description, formValues.date, formValues.address, formValues.foodBank, formValues.capacity, isUrgent);
+        navigate('/');
     };
     return ( role === 'farmer' ? (
         <div>
@@ -120,6 +125,13 @@ const NewPost = (props) => {
                             value={formValues.capacity}
                             onChange={handleInputChange}
                             required/>
+                    </Grid>
+                    <Grid item className={"fieldset"}>
+                        <p>Urgent</p>
+                        <Checkbox value={formValues.urgent}
+                        id={"urgent"}
+                        name={"urgent"}
+                        onChange={() => setIsUrgent(!isUrgent)}/>
                     </Grid>
                     <Button variant="contained" color="success" type="submit" id={"post"}>
                         Post

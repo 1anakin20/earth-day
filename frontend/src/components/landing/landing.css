@@ -37,21 +37,22 @@
   }
 }
 
-.landing__background {
-  background-image: url(../../images/field_1.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
+html {
+    background-image: url(../../images/field_1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
 }
 
 .landing__long {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2em 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2em 0;
 }
 
 .logo-green {
-  color: #238311;
+    color: #238311;
 }
