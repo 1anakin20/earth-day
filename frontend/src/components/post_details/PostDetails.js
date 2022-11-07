@@ -76,6 +76,7 @@ function PostDetails(props) {
 
                         <Button
                             variant={"contained"}
+                            color="success"
                             className="back__btn"
                             onClick={homeRoute}>
                             Back

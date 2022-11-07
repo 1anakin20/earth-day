@@ -135,6 +135,7 @@ function Profile(props) {
                 {/* This button is not handled yet. Would allow the user to modify their info */}
                 <Button
                     variant={"contained"}
+                    color="success"
                     className="modify__btn">
                     Modify Profile
                 </Button>

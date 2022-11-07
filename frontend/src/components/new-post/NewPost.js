@@ -121,7 +121,7 @@ const NewPost = (props) => {
                             onChange={handleInputChange}
                             required/>
                     </Grid>
-                    <Button variant="contained" color="primary" type="submit" id={"post"}>
+                    <Button variant="contained" color="success" type="submit" id={"post"}>
                         Post
                     </Button>
                 </Grid>
