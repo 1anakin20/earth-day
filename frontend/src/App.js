@@ -23,7 +23,14 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/login' element={<Login/>}/>
+                <Route path='/login' element={
+                    <Login
+                        role={role}
+                        username={username}
+                        setRole={setRole}
+                        setUsername={setUsername}
+                    />
+                }/>
                 <Route path='register' element={
                     <Register
                         role={role}

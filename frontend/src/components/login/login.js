@@ -8,9 +8,19 @@ import {useState} from "react";
 import ResponsiveAppBar from "../ResponsiveAppBar";
 import YardIcon from "@mui/icons-material/Yard";
 
-function Login() {
-    const [username, setUsername] = useState("");
+import { useNavigate } from 'react-router-dom';
+
+function Login(props) {
+    const {role, username, setRole, setUsername} = props;
+    
+    const navigate = useNavigate();
     const [password, setPassword] = useState("");
+
+    const signIn = () => {
+        // Check required fields are filled
+        // Authenticate and set role based on database
+        navigate('/');
+    };
 
     return (
         <div className="login__root">
@@ -30,6 +40,7 @@ function Login() {
                         </Divider>
                         <TextField
                             type="email"
+                            value={username}
                             placeholder="Email"
                             autoComplete="email"
                             focused
@@ -38,12 +49,14 @@ function Login() {
                             id="outlined-password-input"
                             label="Password"
                             type="password"
+                            value={password}
                             autoComplete="current-password"
                             variant="outlined"
                             onChange={(e) => setPassword(e.target.value)}/>
                         <Button
                             variant={"contained"}
-                            className="login__btn">
+                            className="login__btn"
+                            onClick={signIn}>
                             Login
                         </Button>
                         <Link to={'/reset'}>Forgot password?</Link>
