@@ -13,8 +13,9 @@ import { useNavigate } from "react-router-dom";
 import ResponsiveAppBar from "../ResponsiveAppBar";
 import React from "react";
 
-function Profile() {
-    const [username, setUsername] = useState("");
+function Profile(props) {
+    const {role, username, setUsername} = props;
+    
     const [password, setPassword] = useState("");
     const [interest, setInterest] = useState("");
     const [chipData, setChipData] = React.useState([
@@ -45,10 +46,18 @@ function Profile() {
         setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
     };
 
+    const signOut = () => {
+        setUsername('');
+        navigate('/');
+    };
+
     return (
         <div className="profile__root">
             <div className="profile__content">
-                <ResponsiveAppBar/>
+                <ResponsiveAppBar
+                    role={role}
+                    username={username}
+                />
 
         <div className="profile">
             <div className="profile__container">
@@ -60,6 +69,14 @@ function Profile() {
                     
                 <Button onClick={handleImageUpload}>
                     Change Profile Picture
+                </Button>
+
+                <Button
+                    variant={"contained"}
+                    color="error"
+                    className="modify__btn"
+                    onClick={signOut}>
+                    Log Out
                 </Button>
 
                 {/* Hardcoded values for now, later could be linked to dummy data or the database */}
@@ -131,6 +148,7 @@ function Profile() {
                 {/* This button is not handled yet. Would allow the user to modify their info */}
                 <Button
                     variant={"contained"}
+                    color="success"
                     className="modify__btn">
                     Modify Profile
                 </Button>

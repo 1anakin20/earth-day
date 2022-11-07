@@ -8,6 +8,7 @@ import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
 import YardIcon from "@mui/icons-material/Yard";
+import {writeFarmerData} from "../../database/database";
 
 function RegisterForm(props) {
     const {role, username, setRole, setUsername} = props;
@@ -29,6 +30,10 @@ function RegisterForm(props) {
 
     const register = () => {
         // Check required fields are filled
+        // Save user info to the database
+        if (role === 'farmer') {
+            writeFarmerData(username, farmName, firstName, lastName, address, city, province, phone, availability, password);
+        }
         navigate('/');
     };
 

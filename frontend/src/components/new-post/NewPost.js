@@ -16,7 +16,9 @@ const defaultValues = {
     capacity: 0,
 };
 
-const NewPost = () => {
+const NewPost = (props) => {
+    const {role, username} = props;
+
     const date = new Date();
     defaultValues.date = date.toISOString().split('T')[0]
     const navigate = useNavigate()
@@ -35,9 +37,12 @@ const NewPost = () => {
         createGleaningPost(formValues.farm, formValues.cropType, formValues.description, formValues.date, formValues.address, formValues.foodBank, formValues.capacity, isUrgent);
         navigate('/');
     };
-    return (
+    return ( role === 'farmer' ? (
         <div>
-            <ResponsiveAppBar />
+            <ResponsiveAppBar
+                role={role}
+                username={username}
+            />
             <form onSubmit={handleSubmit} id={"form"} className={"new_post__background"}>
                 <Grid className={"form__grid"} container alignItems="center" justify="center" direction="column">
                     <Grid item className={"fieldset"}>
@@ -128,12 +133,15 @@ const NewPost = () => {
                         name={"urgent"}
                         onChange={() => setIsUrgent(!isUrgent)}/>
                     </Grid>
-                    <Button variant="contained" color="primary" type="submit" id={"post"}>
+                    <Button variant="contained" color="success" type="submit" id={"post"}>
                         Post
                     </Button>
                 </Grid>
             </form>
         </div>
+    ) : (
+        <div>Access denied!</div>
+    )
     );
 };
 export default NewPost;

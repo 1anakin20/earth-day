@@ -1,5 +1,3 @@
-import {useState} from 'react';
-
 import RegisterForm from './RegisterForm';
 
 import './Register.css';
@@ -11,9 +9,8 @@ import Chip from "@mui/material/Chip";
 import YardIcon from "@mui/icons-material/Yard";
 import ResponsiveAppBar from "../ResponsiveAppBar";
 
-function Register() {
-    const [role, setRole] = useState('');
-    const [username, setUsername] = useState('');
+function Register(props) {
+    const { role, username, setRole, setUsername } = props;
 
     return role ? (
         <div>
@@ -27,7 +24,10 @@ function Register() {
         </div>
     ) : (
         <div className="register__root">
-            <ResponsiveAppBar />
+            <ResponsiveAppBar
+                role={role}
+                username={username}
+            />
             <div className="register">
                 <section className="register__container">
                     <h1 className='app_name'>

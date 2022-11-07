@@ -8,9 +8,33 @@ import {useState} from "react";
 import ResponsiveAppBar from "../ResponsiveAppBar";
 import YardIcon from "@mui/icons-material/Yard";
 
-function Login() {
-    const [username, setUsername] = useState("");
+import {useNavigate} from 'react-router-dom';
+import {getFarmer} from "../../database/database";
+
+function Login(props) {
+    const {role, username, setRole, setUsername} = props;
+
+    const navigate = useNavigate();
     const [password, setPassword] = useState("");
+
+    const signIn = async () => {
+        // Check required fields are filled
+        // Authenticate and set role based on database
+        // Look up if they are a farmer in the database
+        let isFarmer = await getFarmer(username)
+        console.log(isFarmer)
+        if (isFarmer !== null) {
+            setRole("farmer");
+        } else {
+            setRole("");
+        }
+        navigate('/');
+    }
+
+    // useState(() => {
+    //     signIn();
+    // })
+
 
     return (
         <div className="login__root">
@@ -19,7 +43,7 @@ function Login() {
                     <div className="login__container">
                         <h1 className='app_name'>
                             <Link href="/" underline='none'>
-                                <span className={"green"}><YardIcon /></span>
+                                <span className={"green"}><YardIcon/></span>
                                 <span className={"black"}> GLEAN</span><span className={"green"}>ful</span>
                             </Link>
                         </h1>
@@ -30,6 +54,7 @@ function Login() {
                         </Divider>
                         <TextField
                             type="email"
+                            value={username}
                             placeholder="Email"
                             autoComplete="email"
                             focused
@@ -38,12 +63,14 @@ function Login() {
                             id="outlined-password-input"
                             label="Password"
                             type="password"
+                            value={password}
                             autoComplete="current-password"
                             variant="outlined"
                             onChange={(e) => setPassword(e.target.value)}/>
                         <Button
                             variant={"contained"}
-                            className="login__btn">
+                            className="login__btn"
+                            onClick={signIn}>
                             Login
                         </Button>
                         <Link to={'/reset'}>Forgot password?</Link>

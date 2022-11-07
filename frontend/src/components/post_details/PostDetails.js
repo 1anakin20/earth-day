@@ -5,7 +5,9 @@ import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {getPostById} from "../../database/database";
 
-function PostDetails() {
+function PostDetails(props) {
+    const {role, username} = props;
+    
     const {postID} = useParams()
     const [post, setPost] = useState({})
     let navigate = useNavigate();
@@ -36,7 +38,10 @@ function PostDetails() {
     return (
         <div className="details__root">
             <div className="details__content">
-                <ResponsiveAppBar/>
+                <ResponsiveAppBar
+                    role={role}
+                    username={username}
+                />
                 <div className="posts__details">
                     <div className="details__container">
                         <h1>Opportunity details</h1>
@@ -72,6 +77,7 @@ function PostDetails() {
 
                         <Button
                             variant={"contained"}
+                            color="success"
                             className="back__btn"
                             onClick={homeRoute}>
                             Back

@@ -17,10 +17,12 @@ import {alpha, styled} from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { useNavigate } from 'react-router-dom';
 
-const pages = ["Farmers", "FoodBanks",];
+const pages = ["Farmers", "Food Banks"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar(props) {
+  const {role, username} = props;
+  
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const navigate = useNavigate();
 
@@ -35,6 +37,14 @@ function ResponsiveAppBar() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  const handleLogin = () => {
+    navigate('/login');
+  };
+
+  const handleNewPost = () => {
+    navigate('/new_post');
   };
 
   const Search = styled("div")(({ theme }) => ({
@@ -150,6 +160,15 @@ function ResponsiveAppBar() {
                 {page}
               </Button>
             ))}
+            {role === 'farmer' ? (
+              <Button
+                onClick={handleNewPost}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                New Post
+              </Button>
+            ) : undefined
+            }
           </Box>
           <Box sx={{ mr: 10 }}>
             <Search>
@@ -162,22 +181,27 @@ function ResponsiveAppBar() {
               />
             </Search>
           </Box>
-            <Box>
-                <Button variant={"contained"} style={{marginRight: 10, backgroundColor: "white", color: "black"}} onClick={() => navigate('/new_post')}>
-                    Create post
-                </Button>
+          {username ? (
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Profile">
+                <IconButton onClick={handleProfile} sx={{ p: 0 }}>
+                  {/* user picture goes here */}
+                  <Avatar
+                    alt="Name goes Here"
+                    src="../../images/avatar/Default_pfp.png"
+                  />
+                </IconButton>
+              </Tooltip>
             </Box>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Profile">
-              <IconButton onClick={handleProfile} sx={{ p: 0 }}>
-                {/* user picture goes here */}
-                <Avatar
-                  alt="Name goes Here"
-                  src="../../images/avatar/Default_pfp.png"
-                />
-              </IconButton>
-            </Tooltip>
-          </Box>
+          ) : (
+            <Button
+              onClick={handleLogin}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Login
+            </Button>
+          )
+          }
         </Toolbar>
       </Container>
     </AppBar>
