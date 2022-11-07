@@ -30,12 +30,24 @@ function writeGleanerData(firstName, lastName, address, city, province, email, p
     });
 }
 
+export async function getFarmer(name) {
+    const db = getDatabase();
+    let data = await get(child(dbRef, 'farm/'));
+    let farm = data.val();
+    for (const farmKey in farm) {
+        if (farm[farmKey].email === name) {
+            return farm[farmKey];
+        }
+    }
+    return null;
+}
+
 // writeGleanerData('jack', 'wang','123 montreal','montreal','quebec' ,'111_jack@gmail.com', '5147897894', '1450', 'Nov. 7', 'xy');
 
 
 //------------------------------add farmer---------------------------------------------//
 
-function writeFarmerData(farmName, firstName, lastName, address, city, province, email, phone, availability, password) {
+export function writeFarmerData(farmName, firstName, lastName, address, city, province, email, phone, availability, password) {
     const db = getDatabase(app);
     // const reference = ref(db, 'gleaner/' + userId); 
 
