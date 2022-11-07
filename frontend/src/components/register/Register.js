@@ -11,7 +11,8 @@ import Chip from "@mui/material/Chip";
 import YardIcon from "@mui/icons-material/Yard";
 import ResponsiveAppBar from "../ResponsiveAppBar";
 
-function Register() {
+function Register(props) {
+    // const { role, username, setRole, setUsername } = props;
     const [role, setRole] = useState('');
     const [username, setUsername] = useState('');
 
