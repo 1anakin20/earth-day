@@ -16,3 +16,8 @@
 .logo-green {
   color: #238311;
 }
+
+.urgent-flag {
+  color: #ce2029;
+  border-color: #ce2029;
+}
