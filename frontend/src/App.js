@@ -39,15 +39,30 @@ function App() {
                         setUsername={setUsername}
                     />
                 }/>
-                <Route path='/new_post' element={<NewPost/>}/>
+                <Route path='/new_post' element={
+                    <NewPost
+                        role={role}
+                        username={username}
+                    />
+                }/>
                 <Route path='/post_details/:postID' element={
                     <QueryClientProvider client={queryClient}>
                         <PostDetails />
                     </QueryClientProvider>
                 }/>
-                <Route path='/' element={<Landing />}/>
+                <Route path='/' element={
+                    <Landing
+                        role={role}
+                        username={username}
+                    />
+                }/>
                 <Route path='*' element={<Navigate to='/'/>}/>
-                <Route path='/profile' element={<Profile/>}/>
+                <Route path='/profile' element={
+                    <Profile
+                        role={role}
+                        username={username}
+                    />
+                }/>
             </Routes>
         </BrowserRouter>
     );

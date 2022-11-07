@@ -14,7 +14,9 @@ const defaultValues = {
     capacity: 0,
 };
 
-const NewPost = () => {
+const NewPost = (props) => {
+    const {role, username} = props;
+    
     const date = new Date();
     defaultValues.date = date.toISOString().split('T')[0]
 
@@ -30,7 +32,7 @@ const NewPost = () => {
         event.preventDefault();
         console.log(formValues);
     };
-    return (
+    return ( role === 'farmer' ? (
         <div>
             <ResponsiveAppBar />
             <form onSubmit={handleSubmit} id={"form"} className={"new_post__background"}>
@@ -122,6 +124,9 @@ const NewPost = () => {
                 </Grid>
             </form>
         </div>
+    ) : (
+        <div>Access denied!</div>
+    )
     );
 };
 export default NewPost;

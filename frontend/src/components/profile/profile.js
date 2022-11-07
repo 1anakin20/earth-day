@@ -13,8 +13,9 @@ import { useNavigate } from "react-router-dom";
 import ResponsiveAppBar from "../ResponsiveAppBar";
 import React from "react";
 
-function Profile() {
-    const [username, setUsername] = useState("");
+function Profile(props) {
+    const {role, username} = props;
+    
     const [password, setPassword] = useState("");
     const [interest, setInterest] = useState("");
     const [chipData, setChipData] = React.useState([
