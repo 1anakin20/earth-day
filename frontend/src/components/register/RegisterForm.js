@@ -7,7 +7,6 @@ import TextField from '@mui/material/TextField';
 import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
-
 import YardIcon from "@mui/icons-material/Yard";
 
 function RegisterForm(props) {
