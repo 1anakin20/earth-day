@@ -30,6 +30,7 @@ function RegisterForm(props) {
 
     const register = () => {
         // Check required fields are filled
+        // Save user info to the database
         navigate('/');
     };
 
