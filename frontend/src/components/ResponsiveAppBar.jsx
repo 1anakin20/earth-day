@@ -160,12 +160,17 @@ function ResponsiveAppBar(props) {
                 {page}
               </Button>
             ))}
-            <Button
+            {username ? (
+              <Button
                 onClick={handleNewPost}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 New Post
               </Button>
+            ) : (
+              undefined
+            )
+            }
           </Box>
           <Box sx={{ mr: 10 }}>
             <Search>
