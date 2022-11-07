@@ -71,7 +71,7 @@ function Post(props) {
                                 <b>FoodBank:</b> {post.foodBank}
                             </Box>
                             <Button
-                                variant="outlined"
+                                variant="contained"
                                 color="success"
                                 type="submit"
                                 id={"post"}
@@ -82,7 +82,7 @@ function Post(props) {
                                     color: "black",
                                 }}
                             >
-                                Register
+                                <span className="button-text">Register</span>
                             </Button>
                         </Card>
                     </Grid>
