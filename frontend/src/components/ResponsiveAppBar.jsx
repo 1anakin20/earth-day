@@ -160,7 +160,7 @@ function ResponsiveAppBar(props) {
                 {page}
               </Button>
             ))}
-            {username ? (
+            {role === 'farmer' ? (
               <Button
                 onClick={handleNewPost}
                 sx={{ my: 2, color: "white", display: "block" }}
