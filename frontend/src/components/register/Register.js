@@ -24,7 +24,10 @@ function Register(props) {
         </div>
     ) : (
         <div className="register__root">
-            <ResponsiveAppBar />
+            <ResponsiveAppBar
+                role={role}
+                username={username}
+            />
             <div className="register">
                 <section className="register__container">
                     <h1 className='app_name'>

@@ -49,7 +49,10 @@ function Profile(props) {
     return (
         <div className="profile__root">
             <div className="profile__content">
-                <ResponsiveAppBar/>
+                <ResponsiveAppBar
+                    role={role}
+                    username={username}
+                />
 
         <div className="profile">
             <div className="profile__container">

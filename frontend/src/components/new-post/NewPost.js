@@ -34,7 +34,10 @@ const NewPost = (props) => {
     };
     return ( role === 'farmer' ? (
         <div>
-            <ResponsiveAppBar />
+            <ResponsiveAppBar
+                role={role}
+                username={username}
+            />
             <form onSubmit={handleSubmit} id={"form"} className={"new_post__background"}>
                 <Grid className={"form__grid"} container alignItems="center" justify="center" direction="column">
                     <Grid item className={"fieldset"}>

@@ -47,7 +47,10 @@ function App() {
                 }/>
                 <Route path='/post_details/:postID' element={
                     <QueryClientProvider client={queryClient}>
-                        <PostDetails />
+                        <PostDetails
+                            role={role}
+                            username={username}
+                        />
                     </QueryClientProvider>
                 }/>
                 <Route path='/' element={

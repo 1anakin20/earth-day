@@ -9,7 +9,9 @@ import {useNavigate, useParams} from "react-router-dom";
 import {useQuery} from "react-query";
 import * as API from "../../api/requestAPI";
 
-function PostDetails() {
+function PostDetails(props) {
+    const {role, username} = props;
+    
     const {postID} = useParams()
     const {data, error, isError, isLoading} = useQuery('posts', async () => API.getPost(postID))
     let navigate = useNavigate();
@@ -35,7 +37,10 @@ function PostDetails() {
     return (
         <div className="details__root">
             <div className="details__content">
-                <ResponsiveAppBar/>
+                <ResponsiveAppBar
+                    role={role}
+                    username={username}
+                />
                 <div className="posts__details">
                     <div className="details__container">
                         <h1>Opportunity details</h1>
