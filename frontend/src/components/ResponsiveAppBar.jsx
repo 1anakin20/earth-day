@@ -167,9 +167,7 @@ function ResponsiveAppBar(props) {
               >
                 New Post
               </Button>
-            ) : (
-              undefined
-            )
+            ) : undefined
             }
           </Box>
           <Box sx={{ mr: 10 }}>
