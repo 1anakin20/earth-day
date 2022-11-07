@@ -25,14 +25,10 @@
   gap: 10px;
 }
 
-.app_name {
-  font-family: "monospace";
-}
-
 .black {
   color: black;
 }
 
 .green {
-  color: #55A630;
+  color: #55a630;
 }
