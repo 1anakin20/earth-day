@@ -31,16 +31,15 @@
   height: 70%;
 }
 
-.details{
+.details {
   flex-direction: row;
   display: flex;
   justify-content: space-between;
   gap: 75px;
 }
 
-.back__btn{
+.back__btn {
   display: flex;
-  width: 10px;
-  margin: 0px;
+
   justify-content: left;
 }
