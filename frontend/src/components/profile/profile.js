@@ -14,7 +14,7 @@ import ResponsiveAppBar from "../ResponsiveAppBar";
 import React from "react";
 
 function Profile(props) {
-    const {role, username} = props;
+    const {role, username, setUsername} = props;
     
     const [password, setPassword] = useState("");
     const [interest, setInterest] = useState("");
@@ -46,6 +46,11 @@ function Profile(props) {
         setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
     };
 
+    const signOut = () => {
+        setUsername('');
+        navigate('/');
+    };
+
     return (
         <div className="profile__root">
             <div className="profile__content">
@@ -64,6 +69,14 @@ function Profile(props) {
                     
                 <Button onClick={handleImageUpload}>
                     Change Profile Picture
+                </Button>
+
+                <Button
+                    variant={"contained"}
+                    color="error"
+                    className="modify__btn"
+                    onClick={signOut}>
+                    Log Out
                 </Button>
 
                 {/* Hardcoded values for now, later could be linked to dummy data or the database */}

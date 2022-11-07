@@ -64,6 +64,7 @@ function App() {
                     <Profile
                         role={role}
                         username={username}
+                        setUsername={setUsername}
                     />
                 }/>
             </Routes>
