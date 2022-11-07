@@ -1,4 +1,5 @@
 import "./App.css";
+import {useState} from 'react';
 import Landing from "./components/landing/Landing";
 import {QueryClient, QueryClientProvider} from "react-query";
 import {
@@ -15,12 +16,22 @@ import Profile from './components/profile/profile';
 import PostDetails from './components/post_details/PostDetails';
 
 function App() {
+    const [role, setRole] = useState('');
+    const [username, setUsername] = useState('');
+    
     const queryClient = new QueryClient();
     return (
         <BrowserRouter>
             <Routes>
                 <Route path='/login' element={<Login/>}/>
-                <Route path='register' element={<Register/>}/>
+                <Route path='register' element={
+                    <Register
+                        role={role}
+                        username={username}
+                        setRole={setRole}
+                        setUsername={setUsername}
+                    />
+                }/>
                 <Route path='/new_post' element={<NewPost/>}/>
                 <Route path='/post_details/:postID' element={
                     <QueryClientProvider client={queryClient}>
