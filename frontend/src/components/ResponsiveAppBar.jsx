@@ -43,6 +43,10 @@ function ResponsiveAppBar(props) {
     navigate('/login');
   };
 
+  const handleNewPost = () => {
+    navigate('/new_post');
+  };
+
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
     borderRadius: theme.shape.borderRadius,
@@ -156,6 +160,12 @@ function ResponsiveAppBar(props) {
                 {page}
               </Button>
             ))}
+            <Button
+                onClick={handleNewPost}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                New Post
+              </Button>
           </Box>
           <Box sx={{ mr: 10 }}>
             <Search>
