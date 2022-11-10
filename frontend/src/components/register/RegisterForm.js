@@ -32,7 +32,18 @@ function RegisterForm(props) {
         // Check required fields are filled
         // Save user info to the database
         if (role === 'farmer') {
-            writeFarmerData(farmName, firstName, lastName, address, city, province, username, phone, availability, password);
+            writeFarmerData(
+                farmName,
+                firstName,
+                lastName,
+                address,
+                city,
+                province,
+                username,
+                phone,
+                availability,
+                password
+            );
         }
         navigate('/');
     };
