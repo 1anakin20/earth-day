@@ -47,14 +47,17 @@ export async function getFarmer(name) {
 
 //------------------------------add farmer---------------------------------------------//
 
-export function writeFarmerData(farmName, firstName, lastName, address, city, province, email, phone, availability, password) {
+export function writeFarmerData(farmName, firstName, lastName, address, city, province, email, phone, availability, password, setUserId) {
     const db = getDatabase(app);
     // const reference = ref(db, 'gleaner/' + userId); 
 
-    const ListRef = ref(db, 'farm');
+    const ListRef = ref(db, 'users');
     const newRef = push(ListRef);
 
+    setUserId(newRef.key);
+
     set(newRef, {
+        id: newRef.key,
         farmName: farmName,
         firstName: firstName,
         lastName: lastName,
@@ -64,8 +67,8 @@ export function writeFarmerData(farmName, firstName, lastName, address, city, pr
         email: email,
         phone: phone,
         availability: availability,
-        password: password
-
+        password: password,
+        role: 'Farmer'
 
     });
 }
@@ -195,3 +198,14 @@ export async function getPostById(postId) {
     return data.val()
 }
 
+
+//===========================================================================================
+// 4. User Profile
+//===========================================================================================
+
+//-------------------------Get user profile info--------------------------------------//
+
+export async function getUserInfo(userId) {
+    let data = await get(child(dbRef, 'users/' + userId));
+    return data.val();
+}
