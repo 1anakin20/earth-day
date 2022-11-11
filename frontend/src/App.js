@@ -18,6 +18,7 @@ import PostDetails from './components/post_details/PostDetails';
 function App() {
     const [role, setRole] = useState('');
     const [username, setUsername] = useState('');
+    const [userId, setUserId] = useState('');
     
     const queryClient = new QueryClient();
     return (
@@ -37,6 +38,7 @@ function App() {
                         username={username}
                         setRole={setRole}
                         setUsername={setUsername}
+                        setUserId={setUserId}
                     />
                 }/>
                 <Route path='/new_post' element={
@@ -64,7 +66,10 @@ function App() {
                     <Profile
                         role={role}
                         username={username}
+                        userId={userId}
+                        setRole={setRole}
                         setUsername={setUsername}
+                        setUserId={setUserId}
                     />
                 }/>
             </Routes>

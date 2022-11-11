@@ -10,7 +10,7 @@ import YardIcon from "@mui/icons-material/Yard";
 import ResponsiveAppBar from "../ResponsiveAppBar";
 
 function Register(props) {
-    const { role, username, setRole, setUsername } = props;
+    const { role, username, setRole, setUsername, setUserId } = props;
 
     return role ? (
         <div>
@@ -20,6 +20,7 @@ function Register(props) {
                 username={username}
                 setRole={setRole}
                 setUsername={setUsername}
+                setUserId={setUserId}
             />
         </div>
     ) : (

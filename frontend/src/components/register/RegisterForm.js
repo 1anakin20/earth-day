@@ -11,7 +11,7 @@ import YardIcon from "@mui/icons-material/Yard";
 import {writeFarmerData} from "../../database/database";
 
 function RegisterForm(props) {
-    const {role, username, setRole, setUsername} = props;
+    const { role, username, setRole, setUsername, setUserId } = props;
 
     const navigate = useNavigate();
     const [farmName, setFarmName] = useState('');
@@ -42,7 +42,8 @@ function RegisterForm(props) {
                 username,
                 phone,
                 availability,
-                password
+                password,
+                setUserId
             );
         }
         navigate('/');
