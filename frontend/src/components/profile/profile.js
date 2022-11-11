@@ -6,17 +6,18 @@ import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import defaultProfilePic from '../../images/avatar/Default_pfp.png';
 import { FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
 import ResponsiveAppBar from "../ResponsiveAppBar";
 import React from "react";
 
+import { getUserInfo } from "../../database/database";
+
 function Profile(props) {
-    const {role, username, setUsername} = props;
+    const { role, username, userId, setRole, setUsername, setUserId } = props;
     
-    const [password, setPassword] = useState("");
     const [interest, setInterest] = useState("");
     const [chipData, setChipData] = React.useState([
         { key: 0, label: 'Potato' },
@@ -25,6 +26,17 @@ function Profile(props) {
         { key: 3, label: 'grape' },
         { key: 4, label: 'cherry' },
       ]);
+
+    const [user, setUser] = useState("");
+
+    useEffect(() => {
+        const getUser = async () => {
+            const fetchedUser = await getUserInfo(userId);
+            setUser(fetchedUser);
+        }
+        
+        getUser();
+    }, [userId]);
 
     const handleImageUpload = e => {
        // not implemented
@@ -48,6 +60,9 @@ function Profile(props) {
 
     const signOut = () => {
         setUsername('');
+        setUser('');
+        setUserId('');
+        setRole('');
         navigate('/');
     };
 
@@ -81,28 +96,32 @@ function Profile(props) {
 
                 {/* Hardcoded values for now, later could be linked to dummy data or the database */}
                 <div className="info">
+                    <p> <b>Account Type </b></p>
+                    <p> {user.role}</p>
+                </div>
+                <div className="info">
                     <p> <b>First Name </b></p>
-                    <p> User's first name</p>
+                    <p> {user.firstName}</p>
                 </div>
                 <div className="info">
                     <p> <b>Last Name </b></p>
-                    <p> User's last name</p>
-                </div>
-                <div className="info">
-                    <p> <b>Username </b></p>
-                    <p> User's username</p>
+                    <p> {user.lastName}</p>
                 </div>
                 <div className="info">
                     <p> <b>Email </b></p>
-                    <p> User's email</p>
+                    <p> {user.email}</p>
                 </div>
                 <div className="info">
                     <p> <b>Full Address</b></p>
-                    <p> User's address</p>
+                    <p> {user.address}, {user.city}, {user.province}, Canada</p>
                 </div>
                 <div className="info">
                     <p> <b>Phone number</b></p>
-                    <p> User's phone number</p>
+                    <p> {user.phone}</p>
+                </div>
+                <div className="info">
+                    <p> <b>Password</b></p>
+                    <p> ********</p>
                 </div>
                 <div className="info">
                     <p> <b>Events participated </b></p>
