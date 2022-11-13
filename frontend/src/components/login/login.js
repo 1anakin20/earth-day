@@ -21,7 +21,6 @@ function Login(props) {
     const signIn = async () => {
         // Check required fields are filled
         // Authenticate and set role based on database
-        // Look up if they are a farmer in the database
         let isUser = await getUser(username, password);
         
         if (isUser !== null) {
@@ -31,10 +30,6 @@ function Login(props) {
             console.log("Account does not exist!");
         }
     }
-
-    // useState(() => {
-    //     signIn();
-    // })
 
     return (
         <div className="login__root">
