@@ -30,13 +30,14 @@ function writeGleanerData(firstName, lastName, address, city, province, email, p
     });
 }
 
-export async function getFarmer(name) {
-    const db = getDatabase();
-    let data = await get(child(dbRef, 'farm/'));
-    let farm = data.val();
-    for (const farmKey in farm) {
-        if (farm[farmKey].email === name) {
-            return farm[farmKey];
+export async function getUser(username, pass) {
+    let data = await get(child(dbRef, 'users/'));
+    let users = data.val();
+    for (const userKey in users) {
+        if (users[userKey].email === username) {
+            if (users[userKey].password === pass) {
+                return users[userKey];
+            }
         }
     }
     return null;
@@ -47,14 +48,16 @@ export async function getFarmer(name) {
 
 //------------------------------add farmer---------------------------------------------//
 
-export function writeFarmerData(farmName, firstName, lastName, address, city, province, email, phone, availability, password, setUserId) {
+export function writeFarmerData(farmName, firstName, lastName, address, city, province, email, phone, availability, password, setUser) {
     const db = getDatabase(app);
     // const reference = ref(db, 'gleaner/' + userId); 
 
     const ListRef = ref(db, 'users');
     const newRef = push(ListRef);
 
-    setUserId(newRef.key);
+    setUser(prev => ({ ...prev,
+        id: newRef.key
+    }))
 
     set(newRef, {
         id: newRef.key,
