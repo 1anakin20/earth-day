@@ -9,37 +9,34 @@ function Post(props) {
     const [posts, setPosts] = useState([]);
     const navigateToPost = useNavigate()
 
-    const getPosts = async () => {
-        const fetchedPosts = await getAllPosts();
-        console.log(fetchedPosts);
-        for (const key in fetchedPosts) {
-            console.log(key)
-            // Check if post isn't already there
-            if (!posts.some(post => post.id === key)) {
-                setPosts(prevPosts => {
-                    if (!prevPosts.some(post => post.id === key)) {
-                        return [...prevPosts, fetchedPosts[key]]
-                    } else {
-                        return [...prevPosts]
-                    }
-                })
-            }
-        }
-        console.log(posts)
-    }
-
     const getPostByID = async (id) => {
         const fetchedPost = await getPostByID(id);
         console.log(fetchedPost);
     }
 
     useEffect(() => {
+        const getPosts = async () => {
+            const fetchedPosts = await getAllPosts();
+            for (const key in fetchedPosts) {
+                // Check if post isn't already there
+                if (!posts.some(post => post.id === key)) {
+                    setPosts(prevPosts => {
+                        if (!prevPosts.some(post => post.id === key)) {
+                            return [...prevPosts, fetchedPosts[key]]
+                        } else {
+                            return [...prevPosts]
+                        }
+                    })
+                }
+            }
+        }
+        
         if (props.postID === "all") {
             if (posts.length === 0) {
                 getPosts()
             }
         }
-    })
+    }, [posts, props.postID]);
 
     // click event to take user to post details
     const handlePostClick = (event) => {
