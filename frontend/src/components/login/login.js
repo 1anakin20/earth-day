@@ -9,24 +9,25 @@ import ResponsiveAppBar from "../ResponsiveAppBar";
 import YardIcon from "@mui/icons-material/Yard";
 
 import {useNavigate} from 'react-router-dom';
-import {getFarmer} from "../../database/database";
+import { getUser } from "../../database/database";
 
 function Login(props) {
-    const {role, username, setRole, setUsername} = props;
+    const { setUser } = props;
 
     const navigate = useNavigate();
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const signIn = async () => {
         // Check required fields are filled
         // Authenticate and set role based on database
         // Look up if they are a farmer in the database
-        let isFarmer = await getFarmer(username)
-        console.log(isFarmer)
-        if (isFarmer !== null) {
-            setRole("farmer");
+        let isUser = await getUser(username)
+        
+        if (isUser !== null) {
+            setUser(isUser);
         } else {
-            setRole("");
+            console.log("Account does not exist!");
         }
         navigate('/');
     }
@@ -34,7 +35,6 @@ function Login(props) {
     // useState(() => {
     //     signIn();
     // })
-
 
     return (
         <div className="login__root">
