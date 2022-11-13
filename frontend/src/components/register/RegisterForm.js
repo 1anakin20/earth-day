@@ -8,10 +8,10 @@ import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
 import YardIcon from "@mui/icons-material/Yard";
-import {writeFarmerData} from "../../database/database";
+import { writeFarmerData } from "../../database/database";
 
 function RegisterForm(props) {
-    const { role, username, setRole, setUsername, setUserId } = props;
+    const { user, setUser } = props;
 
     const navigate = useNavigate();
     const [farmName, setFarmName] = useState('');
@@ -21,6 +21,7 @@ function RegisterForm(props) {
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [province, setProvince] = useState('');
+    const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [availability, setAvailability] = useState('');
     const [password, setPassword] = useState('');
@@ -31,7 +32,7 @@ function RegisterForm(props) {
     const register = () => {
         // Check required fields are filled
         // Save user info to the database
-        if (role === 'farmer') {
+        if (user.role === 'Farmer') {
             writeFarmerData(
                 farmName,
                 firstName,
@@ -39,12 +40,25 @@ function RegisterForm(props) {
                 address,
                 city,
                 province,
-                username,
+                email,
                 phone,
                 availability,
                 password,
-                setUserId
+                setUser
             );
+
+            setUser(prev => ({ ...prev,
+                farmName: farmName,
+                firstName: firstName,
+                lastName: lastName,
+                address: address,
+                city: city,
+                province: province,
+                email: email,
+                phone: phone,
+                availability: availability,
+                password: password
+            }));
         }
         navigate('/');
     };
@@ -64,7 +78,7 @@ function RegisterForm(props) {
                     <Divider variant={"middle"} className={"login__separation"}>
                         <Chip label={"Or register"} color={"default"}/>
                     </Divider>
-                    {role === 'farmer' && (
+                    {user.role === 'Farmer' && (
                         <>
                             <TextField
                                 label="Farm Name"
@@ -76,7 +90,7 @@ function RegisterForm(props) {
                         </>
                     )}
 
-                    {role === 'foodBank' && (
+                    {user.role === 'Food Bank' && (
                         <>
                             <TextField
                                 label="Food Bank Name"
@@ -130,13 +144,13 @@ function RegisterForm(props) {
                     <TextField
                         label="Email"
                         type='email'
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         placeholder='john.smith@email.ca'
                     />
 
                     <TextField
-                        label="Phone #"
+                        label="Phone Number"
                         type='text'
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
@@ -158,7 +172,7 @@ function RegisterForm(props) {
                         onChange={(e) => setPassword(e.target.value)}
                     />
 
-                    {role === 'gleaner' && (
+                    {user.role === 'Gleaner' && (
                         <>
                             <TextField
                                 label="Group size (minimum of 5)"
@@ -171,7 +185,7 @@ function RegisterForm(props) {
                         </>
                     )}
 
-                    {(role === 'gleaner' || role === 'foodBank') && (
+                    {(user.role === 'Gleaner' || user.role === 'Food Bank') && (
                         <>
                             <TextField
                                 label="Max distance (km)"
@@ -183,7 +197,7 @@ function RegisterForm(props) {
                         </>
                     )}
 
-                    {(role === 'farmer' || role === 'foodBank') && (
+                    {(user.role === 'Farmer' || user.role === 'Food Bank') && (
                         <>
                             <TextField
                                 label="Capacity"
@@ -209,7 +223,7 @@ function RegisterForm(props) {
                     <Button
                         variant={"contained"}
                         color={"warning"}
-                        onClick={() => setRole('')}>
+                        onClick={() => setUser({})}>
                         Back
                     </Button>
                 </form>

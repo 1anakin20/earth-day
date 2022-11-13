@@ -10,24 +10,22 @@ import YardIcon from "@mui/icons-material/Yard";
 import ResponsiveAppBar from "../ResponsiveAppBar";
 
 function Register(props) {
-    const { role, username, setRole, setUsername, setUserId } = props;
+    const { user, setUser } = props;
 
-    return role ? (
+    return user.role ? (
         <div>
-            <ResponsiveAppBar/>
+            <ResponsiveAppBar
+                user={user}
+            />
             <RegisterForm
-                role={role}
-                username={username}
-                setRole={setRole}
-                setUsername={setUsername}
-                setUserId={setUserId}
+                user={user}
+                setUser={setUser}
             />
         </div>
     ) : (
         <div className="register__root">
             <ResponsiveAppBar
-                role={role}
-                username={username}
+                user={user}
             />
             <div className="register">
                 <section className="register__container">
@@ -46,19 +44,19 @@ function Register(props) {
                     <Button
                         variant={"contained"}
                         color={"warning"}
-                        onClick={() => setRole('gleaner')}>
+                        onClick={() => setUser({role: 'Gleaner'})}>
                         Gleaner
                     </Button>
                     <Button
                         variant={"contained"}
                         color={"success"}
-                        onClick={() => setRole('farmer')}>
+                        onClick={() => setUser({role: 'Farmer'})}>
                         Farmer
                     </Button>
                     <Button
                         variant={"contained"}
                         color={"info"}
-                        onClick={() => setRole('foodBank')}>
+                        onClick={() => setUser({role: 'Food Bank'})}>
                         Food Bank
                     </Button>
                 </section>
