@@ -6,31 +6,29 @@ import {useNavigate, useParams} from "react-router-dom";
 import {getPostById} from "../../database/database";
 
 function PostDetails(props) {
-    const {role, username} = props;
+    const { user } = props;
     
-    const {postID} = useParams()
-    const [post, setPost] = useState({})
+    let urgent;
+    const {postID} = useParams();
+    const [post, setPost] = useState({});
     let navigate = useNavigate();
+
     // when back arrow is clicked, user is redirected to the home page
     const homeRoute = () => {
         let path = `..\.`;
         navigate(path);
     };
 
-    const getPost = async (id) => {
-        const data = await getPostById(id)
-        setPost(data)
-        console.log(data)
-    }
-
     useEffect(() => {
-        if (post === {}) {
-            return;
+        const getPost = async (id) => {
+            const data = await getPostById(id);
+            setPost(data);
+            console.log(data)
         }
-        getPost(postID)
-    })
 
-    let urgent
+        getPost(postID);
+    }, [postID]);
+
     if (post.urgent) {
         urgent = <h2 className="urgent">Urgent</h2>
     }
@@ -39,8 +37,7 @@ function PostDetails(props) {
         <div className="details__root">
             <div className="details__content">
                 <ResponsiveAppBar
-                    role={role}
-                    username={username}
+                    user={user}
                 />
                 <div className="posts__details">
                     <div className="details__container">
