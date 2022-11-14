@@ -6,37 +6,23 @@ import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import defaultProfilePic from '../../images/avatar/Default_pfp.png';
 import { FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
 import ResponsiveAppBar from "../ResponsiveAppBar";
-import React from "react";
-
-import { getUserInfo } from "../../database/database";
 
 function Profile(props) {
-    const { role, username, userId, setRole, setUsername, setUserId } = props;
+    const { user, setUser } = props;
     
     const [interest, setInterest] = useState("");
-    const [chipData, setChipData] = React.useState([
+    const [chipData, setChipData] = useState([
         { key: 0, label: 'Potato' },
         { key: 1, label: 'Apple' },
         { key: 2, label: 'Strawberry' },
         { key: 3, label: 'grape' },
         { key: 4, label: 'cherry' },
       ]);
-
-    const [user, setUser] = useState("");
-
-    useEffect(() => {
-        const getUser = async () => {
-            const fetchedUser = await getUserInfo(userId);
-            setUser(fetchedUser);
-        }
-        
-        getUser();
-    }, [userId]);
 
     const handleImageUpload = e => {
        // not implemented
@@ -59,10 +45,7 @@ function Profile(props) {
     };
 
     const signOut = () => {
-        setUsername('');
-        setUser('');
-        setUserId('');
-        setRole('');
+        setUser({});
         navigate('/');
     };
 
@@ -70,8 +53,7 @@ function Profile(props) {
         <div className="profile__root">
             <div className="profile__content">
                 <ResponsiveAppBar
-                    role={role}
-                    username={username}
+                    user={user}
                 />
 
         <div className="profile">
@@ -94,7 +76,7 @@ function Profile(props) {
                     Log Out
                 </Button>
 
-                {/* Hardcoded values for now, later could be linked to dummy data or the database */}
+                {/* Some hardcoded values still left to update */}
                 <div className="info">
                     <p> <b>Account Type </b></p>
                     <p> {user.role}</p>

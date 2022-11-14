@@ -201,14 +201,3 @@ export async function getPostById(postId) {
     return data.val()
 }
 
-
-//===========================================================================================
-// 4. User Profile
-//===========================================================================================
-
-//-------------------------Get user profile info--------------------------------------//
-
-export async function getUserInfo(userId) {
-    let data = await get(child(dbRef, 'users/' + userId));
-    return data.val();
-}
