@@ -6,18 +6,18 @@ import ResponsiveAppBar from "../ResponsiveAppBar";
 import {createGleaningPost} from "../../database/database";
 import {useNavigate} from "react-router-dom";
 
-const defaultValues = {
-    farm: "",
-    cropType: "",
-    description: "",
-    date: null,
-    address: "",
-    foodBank: "",
-    capacity: 0,
-};
-
 const NewPost = (props) => {
-    const {role, username} = props;
+    const { user } = props;
+
+    const defaultValues = {
+        farm: user.farmName,
+        address: `${user.address}, ${user.city}, ${user.province}, Canada`,
+        foodBank: user.foodBank,
+        cropType: "",
+        description: "",
+        date: null,
+        capacity: 0
+    };
 
     const date = new Date();
     defaultValues.date = date.toISOString().split('T')[0]
@@ -37,33 +37,30 @@ const NewPost = (props) => {
         createGleaningPost(formValues.farm, formValues.cropType, formValues.description, formValues.date, formValues.address, formValues.foodBank, formValues.capacity, isUrgent);
         navigate('/');
     };
-    return ( role === 'farmer' ? (
+    return ( user.role === 'Farmer' ? (
         <div>
             <ResponsiveAppBar
-                role={role}
-                username={username}
+                user={user}
             />
             <form onSubmit={handleSubmit} id={"form"} className={"new_post__background"}>
                 <Grid className={"form__grid"} container alignItems="center" justify="center" direction="column">
                     <Grid item className={"fieldset"}>
-                        <p>Farm</p>
-                        <TextField
-                            id="farm"
-                            name="farm"
-                            label="farm"
-                            type="text"
-                            value={formValues.name}
-                            onChange={handleInputChange}
-                            required
-                            variant={"outlined"}
-                        />
+                        <h2>Farm Name</h2>
+                        <p>{formValues.farm}</p>
                     </Grid>
                     <Grid item className={"fieldset"}>
-                        <p>Crop Type</p>
+                        <h2>Address</h2>
+                        <p>{formValues.address}</p>
+                    </Grid>
+                    <Grid item className={"fieldset"}>
+                        <h2>Associated Food Bank</h2>
+                        <p>{formValues.foodBank}</p>
+                    </Grid>
+                    <Grid item className={"fieldset"}>
+                        <h2>Crop Type</h2>
                         <TextField
                             id="cropType"
                             name="cropType"
-                            label="crop type"
                             type="text"
                             value={formValues.cropType}
                             onChange={handleInputChange}
@@ -71,12 +68,11 @@ const NewPost = (props) => {
                         />
                     </Grid>
                     <Grid item className={"fieldset"}>
-                        <p>Description</p>
+                        <h2>Description</h2>
                         <TextareaAutosize
                             minRows={10}
                             id="description"
                             name="description"
-                            label="description"
                             type="text"
                             placeholder={"Enter a description about this opportunity"}
                             value={formValues.description}
@@ -84,50 +80,27 @@ const NewPost = (props) => {
                         />
                     </Grid>
                     <Grid item className={"fieldset"}>
-                        <p>Date</p>
+                        <h2>Date</h2>
                         <TextField
                             id="date"
                             name="date"
-                            label="date"
                             type="date"
                             value={formValues.date}
                             onChange={handleInputChange}
                             required/>
                     </Grid>
                     <Grid item className={"fieldset"}>
-                        <p>Address</p>
-                        <TextField
-                            id="address"
-                            name="address"
-                            label="address"
-                            type="text"
-                            value={formValues.address}
-                            onChange={handleInputChange}
-                            required/>
-                    </Grid>
-                    <Grid item className={"fieldset"}>
-                        <p>Food Bank</p>
-                        <TextField
-                            id="foodBank"
-                            name="foodBank"
-                            label="food bank"
-                            type="text"
-                            value={formValues.foodBank}
-                            onChange={handleInputChange}/>
-                    </Grid>
-                    <Grid item className={"fieldset"}>
-                        <p>Capacity</p>
+                        <h2>Capacity</h2>
                         <TextField
                             id="capacity"
                             name="capacity"
-                            label="capacity"
                             type="number"
                             value={formValues.capacity}
                             onChange={handleInputChange}
                             required/>
                     </Grid>
                     <Grid item className={"fieldset"}>
-                        <p>Urgent</p>
+                        <h2>Urgent</h2>
                         <Checkbox value={formValues.urgent}
                         id={"urgent"}
                         name={"urgent"}
