@@ -109,6 +109,14 @@ const NewPost = (props) => {
                     <Button variant="contained" color="success" type="submit" id={"post"}>
                         Post
                     </Button>
+                    <Button
+                        variant={"contained"}
+                        color={"warning"}
+                        type="button"
+                        id={"post"}
+                        onClick={() => navigate('/')}>
+                        Back
+                    </Button>
                 </Grid>
             </form>
         </div>
