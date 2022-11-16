@@ -88,7 +88,7 @@ function Post(props) {
                                 <b>Remaining Spots:</b> {post.remaining}
                             </Box>
                             <Box className="post-item">
-                                <b>FoodBank:</b> {post.foodBank}
+                                <b>Associated FoodBank:</b> {post.foodBank}
                             </Box>
                             <Button
                                 variant="contained"
