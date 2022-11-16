@@ -45,6 +45,7 @@ function RegisterForm(props) {
                 phone,
                 availability,
                 password,
+                capacity,
                 foodBank,
                 setUser
             );
@@ -60,6 +61,7 @@ function RegisterForm(props) {
                 phone: phone,
                 availability: availability,
                 password: password,
+                capacity: capacity,
                 foodBank: foodBank
             }));
         }
