@@ -48,7 +48,7 @@ export async function getUser(username, pass) {
 
 //------------------------------add farmer---------------------------------------------//
 
-export function writeFarmerData(farmName, firstName, lastName, address, city, province, email, phone, availability, password, setUser) {
+export function writeFarmerData(farmName, firstName, lastName, address, city, province, email, phone, availability, password, foodBank, setUser) {
     const db = getDatabase(app);
     // const reference = ref(db, 'gleaner/' + userId); 
 
@@ -71,6 +71,7 @@ export function writeFarmerData(farmName, firstName, lastName, address, city, pr
         phone: phone,
         availability: availability,
         password: password,
+        foodBank: foodBank,
         role: 'Farmer'
 
     });

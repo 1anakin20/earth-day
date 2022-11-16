@@ -45,6 +45,7 @@ function RegisterForm(props) {
                 phone,
                 availability,
                 password,
+                foodBank,
                 setUser
             );
 
@@ -58,7 +59,8 @@ function RegisterForm(props) {
                 email: email,
                 phone: phone,
                 availability: availability,
-                password: password
+                password: password,
+                foodBank: foodBank
             }));
         }
         navigate('/');
