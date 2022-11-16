@@ -28,6 +28,7 @@ function RegisterForm(props) {
     const [groupSize, setGroupSize] = useState('');
     const [maxDistance, setMaxDistance] = useState('');
     const [capacity, setCapacity] = useState('');
+    const [foodBank, setFoodBank] = useState('');
 
     const register = () => {
         // Check required fields are filled
@@ -205,6 +206,18 @@ function RegisterForm(props) {
                                 value={capacity}
                                 onChange={(e) => setCapacity(e.target.value)}
                                 placeholder='25'
+                            />
+                        </>
+                    )}
+
+                    {user.role === 'Farmer' && (
+                        <>
+                            <TextField
+                                label="Associated Food Bank"
+                                type='text'
+                                value={foodBank}
+                                onChange={(e) => setFoodBank(e.target.value)}
+                                placeholder='Donations Welcome Food Bank'
                             />
                         </>
                     )}
