@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import YardIcon from "@mui/icons-material/Yard";
 import SearchIcon from "@mui/icons-material/Search";
-import {alpha, styled} from "@mui/material/styles";
+import { alpha, styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { useNavigate } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ const pages = ["Farmers", "Food Banks"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar(props) {
-  const {role, username} = props;
+  const { user } = props;
   
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const navigate = useNavigate();
@@ -160,7 +160,7 @@ function ResponsiveAppBar(props) {
                 {page}
               </Button>
             ))}
-            {role === 'farmer' ? (
+            {(user.id && user.role === 'Farmer') ? (
               <Button
                 onClick={handleNewPost}
                 sx={{ my: 2, color: "white", display: "block" }}
@@ -181,7 +181,7 @@ function ResponsiveAppBar(props) {
               />
             </Search>
           </Box>
-          {username ? (
+          {user.id ? (
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Profile">
                 <IconButton onClick={handleProfile} sx={{ p: 0 }}>
