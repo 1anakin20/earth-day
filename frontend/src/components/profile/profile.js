@@ -70,7 +70,7 @@ function Profile(props) {
                         {modifySaveButtonText === 'Modify Profile' ? (
                             <>
                                 <Button id="back_btn" onClick={routeChange}>
-                                <FaArrowLeft />
+                                    <FaArrowLeft />
                                 </Button>
                                 <h1 id="profile_tag"> Profile </h1>
                                 <img src={defaultProfilePic} alt="Profile Picture" id="profilePic" />
