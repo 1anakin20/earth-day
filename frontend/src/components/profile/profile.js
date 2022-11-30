@@ -83,22 +83,24 @@ function Profile(props) {
                         <Button onClick={handleImageUpload}>
                             Change Profile Picture
                         </Button>
+                        {editButtonText === 'Edit Profile' && (
+                            <Button
+                                variant={"contained"}
+                                color="error"
+                                className="modify__btn"
+                                onClick={signOut}>
+                                Log Out
+                            </Button>
+                        )}
+
+                        <div className="info">
+                            <p> <b>Account Type </b></p>
+                            <p> {user.role}</p>
+                        </div>
 
                         {editButtonText === 'Edit Profile' ? (
                             <>
-                                <Button
-                                    variant={"contained"}
-                                    color="error"
-                                    className="modify__btn"
-                                    onClick={signOut}>
-                                    Log Out
-                                </Button>
-
                                 {/* Some hardcoded values still left to update */}
-                                <div className="info">
-                                    <p> <b>Account Type </b></p>
-                                    <p> {user.role}</p>
-                                </div>
                                 <div className="info">
                                     <p> <b>First Name </b></p>
                                     <p> {user.firstName}</p>
@@ -175,10 +177,9 @@ function Profile(props) {
                             </>
                         ) : (
                             <>
-                                <p>The form fields go here.</p>
+                                <p>Form fields go here</p>
                             </>
-                        )
-                        }
+                        )}
                     </div>
                 </div>
             </div>
