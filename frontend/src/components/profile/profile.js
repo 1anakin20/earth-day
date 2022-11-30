@@ -23,18 +23,21 @@ function Profile(props) {
         { key: 3, label: 'grape' },
         { key: 4, label: 'cherry' },
       ]);
-      const [modifySaveButtonText, setModifySaveButtonText] = useState('Modify Profile');
+      const [editButtonText, setEditButtonText] = useState('Edit Profile');
 
     const handleImageUpload = e => {
        // not implemented
        // would be used to change the profile picture 
     };
 
-    // when back arrow is clicked, user is redirected to the home page
+    // when back arrow is clicked, user is redirected to the previous page
     let navigate = useNavigate(); 
-    const routeChange = () => { 
-        let path = `..\.`; 
-        navigate(path);
+    const previousPage = () => { 
+        if (editButtonText === 'Edit Profile') {
+            navigate('/');
+        } else {
+            setEditButtonText('Edit Profile');
+        }
     }
 
     const ListItem = styled('li')(({ theme }) => ({
@@ -50,11 +53,11 @@ function Profile(props) {
         navigate('/');
     };
 
-    const clickModifySave = () => {
-        modifySaveButtonText === 'Modify Profile' ? (
-            setModifySaveButtonText('Back')
+    const clickEdit = () => {
+        editButtonText === 'Edit Profile' ? (
+            setEditButtonText('Update Profile')
         ) : (
-            setModifySaveButtonText('Modify Profile')
+            setEditButtonText('Edit Profile')
         );
       };
 
@@ -67,18 +70,18 @@ function Profile(props) {
 
                 <div className="profile">
                     <div className="profile__container">
-                        {modifySaveButtonText === 'Modify Profile' ? (
-                            <>
-                                <Button id="back_btn" onClick={routeChange}>
-                                    <FaArrowLeft />
-                                </Button>
-                                <h1 id="profile_tag"> Profile </h1>
-                                <img src={defaultProfilePic} alt="Profile Picture" id="profilePic" />
-                                    
-                                <Button onClick={handleImageUpload}>
-                                    Change Profile Picture
-                                </Button>
+                        <Button id="back_btn" onClick={previousPage}>
+                            <FaArrowLeft />
+                        </Button>
+                        <h1 id="profile_tag">Profile</h1>
+                        <img src={defaultProfilePic} alt="Profile Picture" id="profilePic" />
+                            
+                        <Button onClick={handleImageUpload}>
+                            Change Profile Picture
+                        </Button>
 
+                        {editButtonText === 'Edit Profile' ? (
+                            <>
                                 <Button
                                     variant={"contained"}
                                     color="error"
@@ -157,21 +160,21 @@ function Profile(props) {
                                     })}
                                 </Paper>
                                 <br/>
+                                {/* This button is not handled yet. Would allow the user to modify their info */}
+                                <Button
+                                    variant={"contained"}
+                                    color="success"
+                                    className="modify__btn"
+                                    onClick={clickEdit}>
+                                    {editButtonText}
+                                </Button>
                             </>
                         ) : (
                             <>
-                                <p>Input fields of profile info goes here.</p>
+                                <p>The form fields go here.</p>
                             </>
                         )
                         }
-                        {/* This button is not handled yet. Would allow the user to modify their info */}
-                        <Button
-                            variant={"contained"}
-                            color="success"
-                            className="modify__btn"
-                            onClick={() => clickModifySave()}>
-                            {modifySaveButtonText}
-                        </Button>
                     </div>
                 </div>
             </div>
