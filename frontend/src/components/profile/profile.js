@@ -52,7 +52,7 @@ function Profile(props) {
 
     const clickModifySave = () => {
         modifySaveButtonText === 'Modify Profile' ? (
-            setModifySaveButtonText('Update Profile')
+            setModifySaveButtonText('Back')
         ) : (
             setModifySaveButtonText('Modify Profile')
         );
