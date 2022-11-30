@@ -23,7 +23,9 @@ function Profile(props) {
         { key: 3, label: 'grape' },
         { key: 4, label: 'cherry' },
       ]);
-      const [editButtonText, setEditButtonText] = useState('Edit Profile');
+
+    const [profileMode, setProfileMode] = useState('');
+    const [editButtonText, setEditButtonText] = useState('Edit Profile');
 
     const handleImageUpload = e => {
        // not implemented
@@ -36,6 +38,7 @@ function Profile(props) {
         if (editButtonText === 'Edit Profile') {
             navigate('/');
         } else {
+            setProfileMode('');
             setEditButtonText('Edit Profile');
         }
     }
@@ -54,12 +57,13 @@ function Profile(props) {
     };
 
     const clickEdit = () => {
-        editButtonText === 'Edit Profile' ? (
-            setEditButtonText('Update Profile')
-        ) : (
-            setEditButtonText('Edit Profile')
-        );
-      };
+        if (editButtonText === 'Edit Profile') {
+            setProfileMode('Edit ');
+            setEditButtonText('Update Profile');
+        } else {
+            setEditButtonText('Edit Profile');
+        }
+    };
 
     return (
         <div className="profile__root">
@@ -73,7 +77,7 @@ function Profile(props) {
                         <Button id="back_btn" onClick={previousPage}>
                             <FaArrowLeft />
                         </Button>
-                        <h1 id="profile_tag">Profile</h1>
+                        <h1 id="profile_tag">{profileMode}Profile</h1>
                         <img src={defaultProfilePic} alt="Profile Picture" id="profilePic" />
                             
                         <Button onClick={handleImageUpload}>
