@@ -12,6 +12,8 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
 import ResponsiveAppBar from "../ResponsiveAppBar";
 
+import { updateFarmerData } from "../../database/database";
+
 function Profile(props) {
     const { user, setUser } = props;
     
@@ -63,6 +65,30 @@ function Profile(props) {
         } else {
             setEditButtonText('Edit Profile');
         }
+    };
+
+    const updateProfile = () => {
+        // Check required fields are filled
+        // Save user info to the database
+        if (user.role === 'Farmer') {
+            updateFarmerData(
+                user.id,
+                // farmName,
+                user.firstName,
+                // lastName,
+                // address,
+                // city,
+                // province,
+                // email,
+                // phone,
+                // availability,
+                // password,
+                // capacity,
+                // foodBank
+            );
+        }
+        setProfileMode('');
+        setEditButtonText('Edit Profile');
     };
 
     return (
@@ -176,9 +202,24 @@ function Profile(props) {
                                 </Button>
                             </>
                         ) : (
-                            <>
-                                <p>Form fields go here</p>
-                            </>
+                            <form>
+                                <TextField
+                                    label="First Name"
+                                    type='text'
+                                    value={user.firstName}
+                                    onChange={(e) => setUser(prev => ({ ...prev,
+                                        firstName: e.target.value
+                                    }))}
+                                    placeholder='John'
+                                />
+                                <Button
+                                    variant={"contained"}
+                                    color="success"
+                                    className="modify__btn"
+                                    onClick={updateProfile}>
+                                    {editButtonText}
+                                </Button>
+                            </form>
                         )}
                     </div>
                 </div>
