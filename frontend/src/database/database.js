@@ -205,3 +205,28 @@ export async function getUser(username, pass) {
     return null;
 }
 
+//-----------------update farmer information---------------------------------------------//
+
+export function updateFarmerData(userId, farmName, firstName, lastName, address, city, province, email, phone, availability, password, capacity, foodBank) {
+    const userData = {
+        id: userId,
+        farmName: farmName,
+        firstName: firstName,
+        lastName: lastName,
+        address: address,
+        city: city,
+        province: province,
+        email: email,
+        phone: phone,
+        availability: availability,
+        password: password,
+        capacity: capacity,
+        foodBank: foodBank,
+        role: 'Farmer'
+    };
+    
+    const updates = {};
+    updates['users/' + userId] = userData;
+    return update(dbRef, updates);
+}
+
