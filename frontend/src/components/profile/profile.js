@@ -67,6 +67,12 @@ function Profile(props) {
         }
     };
 
+    const updateUser = (event, key) => {
+        setUser(prev => ({ ...prev,
+            [key]: event.target.value
+        }));
+    };
+
     const updateProfile = () => {
         // Check required fields are filled
         // Save user info to the database
@@ -202,15 +208,20 @@ function Profile(props) {
                                 </Button>
                             </>
                         ) : (
-                            <form>
+                            <form className="form__info">
                                 <TextField
                                     label="First Name"
                                     type='text'
                                     value={user.firstName}
-                                    onChange={(e) => setUser(prev => ({ ...prev,
-                                        firstName: e.target.value
-                                    }))}
+                                    onChange={(e) => updateUser(e, "firstName")}
                                     placeholder='John'
+                                />
+                                <TextField
+                                    label="Last Name"
+                                    type='text'
+                                    value={user.lastName}
+                                    onChange={(e) => updateUser(e, "lastName")}
+                                    placeholder='Smith'
                                 />
                                 <Button
                                     variant={"contained"}
