@@ -79,18 +79,18 @@ function Profile(props) {
         if (user.role === 'Farmer') {
             updateFarmerData(
                 user.id,
-                // farmName,
+                user.farmName,
                 user.firstName,
-                // lastName,
-                // address,
-                // city,
-                // province,
-                // email,
-                // phone,
-                // availability,
-                // password,
-                // capacity,
-                // foodBank
+                user.lastName,
+                user.address,
+                user.city,
+                user.province,
+                user.email,
+                user.phone,
+                user.availability,
+                user.password,
+                user.capacity,
+                user.foodBank
             );
         }
         setProfileMode('');
@@ -133,6 +133,12 @@ function Profile(props) {
                         {editButtonText === 'Edit Profile' ? (
                             <>
                                 {/* Some hardcoded values still left to update */}
+                                {user.role === 'Farmer' && (
+                                    <div className="info">
+                                        <p> <b>Farm Name </b></p>
+                                        <p> {user.farmName}</p>
+                                    </div>
+                                )}
                                 <div className="info">
                                     <p> <b>First Name </b></p>
                                     <p> {user.firstName}</p>
@@ -142,21 +148,37 @@ function Profile(props) {
                                     <p> {user.lastName}</p>
                                 </div>
                                 <div className="info">
-                                    <p> <b>Email </b></p>
-                                    <p> {user.email}</p>
-                                </div>
-                                <div className="info">
                                     <p> <b>Full Address</b></p>
                                     <p> {user.address}, {user.city}, {user.province}, Canada</p>
+                                </div>
+                                <div className="info">
+                                    <p> <b>Email </b></p>
+                                    <p> {user.email}</p>
                                 </div>
                                 <div className="info">
                                     <p> <b>Phone number</b></p>
                                     <p> {user.phone}</p>
                                 </div>
                                 <div className="info">
+                                    <p> <b>Availability</b></p>
+                                    <p> {user.availability}</p>
+                                </div>
+                                <div className="info">
                                     <p> <b>Password</b></p>
                                     <p> ********</p>
                                 </div>
+                                {(user.role === 'Farmer' || user.role === 'Food Bank') && (
+                                    <div className="info">
+                                        <p> <b>Capacity</b></p>
+                                        <p> {user.capacity}</p>
+                                    </div>
+                                )}
+                                {user.role === 'Farmer' && (
+                                    <div className="info">
+                                        <p> <b>Associated Food Bank</b></p>
+                                        <p> {user.foodBank}</p>
+                                    </div>
+                                )}
                                 <div className="info">
                                     <p> <b>Events participated </b></p>
                                     <p> User's events</p>
@@ -209,6 +231,16 @@ function Profile(props) {
                             </>
                         ) : (
                             <form className="form__info">
+                                {user.role === 'Farmer' && (
+                                  
+                                    <TextField
+                                        label="Farm Name"
+                                        type='text'
+                                        value={user.farmName}
+                                        onChange={(e) => updateUser(e, "farmName")}
+                                        placeholder='Plentiful Farm'
+                                    />
+                                )}
                                 <TextField
                                     label="First Name"
                                     type='text'
@@ -223,6 +255,72 @@ function Profile(props) {
                                     onChange={(e) => updateUser(e, "lastName")}
                                     placeholder='Smith'
                                 />
+                                <TextField
+                                    label="Address"
+                                    type='text'
+                                    value={user.address}
+                                    onChange={(e) => updateUser(e, "address")}
+                                    placeholder='5555 First Street'
+                                />
+                                <TextField
+                                    label="City"
+                                    type='text'
+                                    value={user.city}
+                                    onChange={(e) => updateUser(e, "city")}
+                                    placeholder='Montreal'
+                                />
+                                <TextField
+                                    label="Province"
+                                    type='text'
+                                    value={user.province}
+                                    onChange={(e) => updateUser(e, "province")}
+                                    placeholder='Quebec'
+                                />
+                                <TextField
+                                    label="Email"
+                                    type='email'
+                                    value={user.email}
+                                    onChange={(e) => updateUser(e, "email")}
+                                    placeholder='john.smith@email.ca'
+                                />
+                                <TextField
+                                    label="Phone Number"
+                                    type='text'
+                                    value={user.phone}
+                                    onChange={(e) => updateUser(e, "phone")}
+                                    placeholder='1-514-999-9999'
+                                />
+                                <TextField
+                                    label="Availability"
+                                    type='text'
+                                    value={user.availability}
+                                    onChange={(e) => updateUser(e, "availability")}
+                                    placeholder='Aug 5 - Aug 8 from 9 AM to 5 PM'
+                                />
+                                <TextField
+                                    label="Password"
+                                    type='password'
+                                    value={user.password}
+                                    onChange={(e) => updateUser(e, "password")}
+                                />
+                                {(user.role === 'Farmer' || user.role === 'Food Bank') && (
+                                    <TextField
+                                        label="Capacity"
+                                        type='number'
+                                        value={user.capacity}
+                                        onChange={(e) => updateUser(e, "capacity")}
+                                        placeholder='25'
+                                    />
+                                )}
+                                {user.role === 'Farmer' && (
+                                    <TextField
+                                        label="Associated Food Bank"
+                                        type='text'
+                                        value={user.foodBank}
+                                        onChange={(e) => updateUser(e, "foodBank")}
+                                        placeholder='Donations Welcome Food Bank'
+                                    />
+                                )}
                                 <Button
                                     variant={"contained"}
                                     color="success"
