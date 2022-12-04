@@ -198,7 +198,7 @@ function Profile(props) {
                                     })}
                                 </Paper>
                                 <br/>
-                                {/* This button is not handled yet. Would allow the user to modify their info */}
+                                {/* This button allows the user to modify their info */}
                                 <Button
                                     variant={"contained"}
                                     color="success"
