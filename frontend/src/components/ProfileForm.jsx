@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import { updateFarmerData } from "../database/database";
 
 function ProfileForm(props) {
-  const { user, submitButtonText, setUser, setProfileMode, setSubmitButtonText } = props;
+  const { formType, user, submitButtonText, setUser, setProfileMode, setSubmitButtonText } = props;
 
   const updateUser = (event, key) => {
     setUser(prev => ({ ...prev,
@@ -40,13 +40,12 @@ function ProfileForm(props) {
   return (
     <form className="form__info">
       {user.role === 'Farmer' && (
-        
         <TextField
-            label="Farm Name"
-            type='text'
-            value={user.farmName}
-            onChange={(e) => updateUser(e, "farmName")}
-            placeholder='Plentiful Farm'
+          label="Farm Name"
+          type='text'
+          value={user.farmName}
+          onChange={(e) => updateUser(e, "farmName")}
+          placeholder='Plentiful Farm'
         />
       )}
       <TextField
