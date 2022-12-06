@@ -60,13 +60,6 @@
     gap: 50px;
 }
 
-.form__info{
-    flex-direction: column;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
