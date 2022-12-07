@@ -21,21 +21,7 @@ function ProfileForm(props) {
     // Check required fields are filled
     // Save user info to the database
     if (user.role === 'Farmer') {
-      updateFarmerData(
-        user.id,
-        user.farmName,
-        user.firstName,
-        user.lastName,
-        user.address,
-        user.city,
-        user.province,
-        user.email,
-        user.phone,
-        user.availability,
-        user.password,
-        user.capacity,
-        user.foodBank
-      );
+      updateFarmerData(user);
     }
     setProfileMode('');
     setSubmitButtonText('Edit Profile');

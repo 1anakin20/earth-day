@@ -207,26 +207,26 @@ export async function getUser(username, pass) {
 
 //-----------------update farmer information---------------------------------------------//
 
-export function updateFarmerData(userId, farmName, firstName, lastName, address, city, province, email, phone, availability, password, capacity, foodBank) {
+export function updateFarmerData(user) {
     const userData = {
-        id: userId,
-        farmName: farmName,
-        firstName: firstName,
-        lastName: lastName,
-        address: address,
-        city: city,
-        province: province,
-        email: email,
-        phone: phone,
-        availability: availability,
-        password: password,
-        capacity: capacity,
-        foodBank: foodBank,
+        id: user.id,
+        farmName: user.farmName,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        address: user.address,
+        city: user.city,
+        province: user.province,
+        email: user.email,
+        phone: user.phone,
+        availability: user.availability,
+        password: user.password,
+        capacity: user.capacity,
+        foodBank: user.foodBank,
         role: 'Farmer'
     };
     
     const updates = {};
-    updates['users/' + userId] = userData;
+    updates['users/' + user.id] = userData;
     return update(dbRef, updates);
 }
 
