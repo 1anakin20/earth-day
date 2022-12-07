@@ -1,11 +1,15 @@
+import { useNavigate } from 'react-router-dom';
+
 import "./ProfileForm.css";
 import Button from '@mui/material/Button';
 import TextField from "@mui/material/TextField";
 
-import { updateFarmerData } from "../database/database";
+import { updateFarmerData, writeFarmerData } from "../database/database";
 
 function ProfileForm(props) {
   const { user, submitButtonText, setUser, setProfileMode, setSubmitButtonText } = props;
+  const navigate = useNavigate();
+  let clickFunction;
 
   const updateUser = (event, key) => {
     setUser(prev => ({ ...prev,
@@ -36,6 +40,35 @@ function ProfileForm(props) {
     setProfileMode('');
     setSubmitButtonText('Edit Profile');
   };
+
+  const register = () => {
+    // Check required fields are filled
+    // Save user info to the database
+    if (user.role === 'Farmer') {
+      writeFarmerData(
+        user.farmName,
+        user.firstName,
+        user.lastName,
+        user.address,
+        user.city,
+        user.province,
+        user.email,
+        user.phone,
+        user.availability,
+        user.password,
+        user.capacity,
+        user.foodBank,
+        setUser
+      );
+    }
+    navigate('/');
+  };
+
+  if (submitButtonText === 'Update Profile') {
+    clickFunction = updateProfile;
+  } else {
+    clickFunction = register;
+  }
 
   return (
     <form className="form__info">
@@ -131,7 +164,7 @@ function ProfileForm(props) {
       <Button
         variant={"contained"}
         color="success"
-        onClick={updateProfile}>
+        onClick={clickFunction}>
         {submitButtonText}
       </Button>
     </form>
