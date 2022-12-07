@@ -201,7 +201,6 @@ function Profile(props) {
                             </>
                         ) : (
                             <ProfileForm
-                                formType="update"
                                 user={user}
                                 submitButtonText={editButtonText}
                                 setUser={setUser}

@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import { updateFarmerData } from "../database/database";
 
 function ProfileForm(props) {
-  const { formType, user, submitButtonText, setUser, setProfileMode, setSubmitButtonText } = props;
+  const { user, submitButtonText, setUser, setProfileMode, setSubmitButtonText } = props;
 
   const updateUser = (event, key) => {
     setUser(prev => ({ ...prev,
