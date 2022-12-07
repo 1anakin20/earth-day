@@ -10,6 +10,10 @@ function ProfileForm(props) {
   const { user, submitButtonText, setUser, setProfileMode, setSubmitButtonText } = props;
   const navigate = useNavigate();
   let clickFunction;
+  const textFields = [
+    { label: 'First Name', type: 'text', value: user.firstName, dataKey: 'firstName', placeholder: 'John' },
+    { label: 'Last Name', type: 'text', value: user.lastName, dataKey: 'lastName', placeholder: 'Smith' },
+  ];
 
   const updateUser = (event, key) => {
     setUser(prev => ({ ...prev,
@@ -42,6 +46,19 @@ function ProfileForm(props) {
     clickFunction = register;
   }
 
+  const inputFields = textFields.map(textField => {
+    return (
+      <TextField
+        key={textField.label}  
+        label={textField.label}
+        type={textField.type}
+        value={textField.value}
+        onChange={(e) => updateUser(e, textField.dataKey)}
+        placeholder={textField.placeholder}
+      />
+    );
+  });
+
   return (
     <form className="form__info">
       {user.role === 'Farmer' && (
@@ -53,20 +70,7 @@ function ProfileForm(props) {
           placeholder='Plentiful Farm'
         />
       )}
-      <TextField
-        label="First Name"
-        type='text'
-        value={user.firstName}
-        onChange={(e) => updateUser(e, "firstName")}
-        placeholder='John'
-      />
-      <TextField
-        label="Last Name"
-        type='text'
-        value={user.lastName}
-        onChange={(e) => updateUser(e, "lastName")}
-        placeholder='Smith'
-      />
+      {inputFields}
       <TextField
         label="Address"
         type='text'
