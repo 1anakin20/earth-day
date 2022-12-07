@@ -35,7 +35,7 @@ function writeGleanerData(firstName, lastName, address, city, province, email, p
 
 //------------------------------add farmer---------------------------------------------//
 
-export function writeFarmerData(farmName, firstName, lastName, address, city, province, email, phone, availability, password, capacity, foodBank, setUser) {
+export function writeFarmerData(user, setUser) {
     const db = getDatabase(app);
     // const reference = ref(db, 'gleaner/' + userId); 
 
@@ -48,18 +48,18 @@ export function writeFarmerData(farmName, firstName, lastName, address, city, pr
 
     set(newRef, {
         id: newRef.key,
-        farmName: farmName,
-        firstName: firstName,
-        lastName: lastName,
-        address: address,
-        city: city,
-        province: province,
-        email: email,
-        phone: phone,
-        availability: availability,
-        password: password,
-        capacity: capacity,
-        foodBank: foodBank,
+        farmName: user.farmName,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        address: user.address,
+        city: user.city,
+        province: user.province,
+        email: user.email,
+        phone: user.phone,
+        availability: user.availability,
+        password: user.password,
+        capacity: user.capacity,
+        foodBank: user.foodBank,
         role: 'Farmer'
     });
 }

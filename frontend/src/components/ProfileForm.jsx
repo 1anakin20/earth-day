@@ -31,21 +31,7 @@ function ProfileForm(props) {
     // Check required fields are filled
     // Save user info to the database
     if (user.role === 'Farmer') {
-      writeFarmerData(
-        user.farmName,
-        user.firstName,
-        user.lastName,
-        user.address,
-        user.city,
-        user.province,
-        user.email,
-        user.phone,
-        user.availability,
-        user.password,
-        user.capacity,
-        user.foodBank,
-        setUser
-      );
+      writeFarmerData(user, setUser);
     }
     navigate('/');
   };
