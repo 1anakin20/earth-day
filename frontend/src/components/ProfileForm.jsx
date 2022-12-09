@@ -30,7 +30,7 @@ function ProfileForm(props) {
   };
 
   const updateProfile = () => {
-    // Check required fields are filled
+    // Check required fields are filled (not implemented yet)
     // Save user info to the database
     if (user.role === 'Farmer') {
       updateFarmerData(user);
@@ -40,7 +40,7 @@ function ProfileForm(props) {
   };
 
   const register = () => {
-    // Check required fields are filled
+    // Check required fields are filled (not implemented yet)
     // Save user info to the database
     if (user.role === 'Farmer') {
       writeFarmerData(user, setUser);
