@@ -71,29 +71,57 @@ function ProfileForm(props) {
     <form className="form__info">
       {user.role === 'Farmer' && (
         <TextField
-          label="Farm Name"
+          label='Farm Name'
           type='text'
           value={user.farmName}
-          onChange={(e) => updateUser(e, "farmName")}
+          onChange={(e) => updateUser(e, 'farmName')}
           placeholder='Plentiful Farm'
         />
       )}
+      {user.role === 'Food Bank' && (             
+        <TextField
+          label='Food Bank Name'
+          type='text'
+          value={user.foodBankName}
+          onChange={(e) => updateUser(e, 'foodBankName')}
+          placeholder='Jim Food Bank'
+        />            
+      )}
       {inputFields}
+      {user.role === 'Gleaner' && (             
+        <TextField
+          label='Group size (minimum of 5)'
+          type='number'
+          value={user.groupSize}
+          onChange={(e) => updateUser(e, 'groupSize')}
+          placeholder='8'
+          min={5}
+        />              
+      )}
+      {(user.role === 'Gleaner' || user.role === 'Food Bank') && (         
+        <TextField
+          label="Max distance (km)"
+          type='number'
+          value={user.maxDistance}
+          onChange={(e) => updateUser(e, 'maxDistance')}
+          placeholder='20'
+        />             
+      )}
       {(user.role === 'Farmer' || user.role === 'Food Bank') && (
         <TextField
-          label="Capacity"
+          label='Capacity'
           type='number'
           value={user.capacity}
-          onChange={(e) => updateUser(e, "capacity")}
+          onChange={(e) => updateUser(e, 'capacity')}
           placeholder='25'
         />
       )}
       {user.role === 'Farmer' && (
         <TextField
-          label="Associated Food Bank"
+          label='Associated Food Bank'
           type='text'
           value={user.foodBank}
-          onChange={(e) => updateUser(e, "foodBank")}
+          onChange={(e) => updateUser(e, 'foodBank')}
           placeholder='Donations Welcome Food Bank'
         />
       )}

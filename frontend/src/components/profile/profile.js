@@ -109,6 +109,12 @@ function Profile(props) {
                                         <p> {user.farmName}</p>
                                     </div>
                                 )}
+                                {user.role === 'Food Bank' && (             
+                                    <div className="info">
+                                        <p> <b>Food Bank Name </b></p>
+                                        <p> {user.foodBankName}</p>
+                                    </div>          
+                                )}
                                 <div className="info">
                                     <p> <b>First Name </b></p>
                                     <p> {user.firstName}</p>
@@ -137,6 +143,18 @@ function Profile(props) {
                                     <p> <b>Password</b></p>
                                     <p> ********</p>
                                 </div>
+                                {user.role === 'Gleaner' && (             
+                                    <div className="info">
+                                        <p> <b>Group size</b></p>
+                                        <p> {user.groupSize}</p>
+                                    </div>         
+                                )}
+                                {(user.role === 'Gleaner' || user.role === 'Food Bank') && (         
+                                    <div className="info">
+                                        <p> <b>Max distance (km)</b></p>
+                                        <p> {user.maxDistance}</p>
+                                    </div>       
+                                )}
                                 {(user.role === 'Farmer' || user.role === 'Food Bank') && (
                                     <div className="info">
                                         <p> <b>Capacity</b></p>
