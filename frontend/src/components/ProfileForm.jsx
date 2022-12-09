@@ -10,9 +10,17 @@ function ProfileForm(props) {
   const { user, submitButtonText, setUser, setProfileMode, setSubmitButtonText } = props;
   const navigate = useNavigate();
   let clickFunction;
+  
   const textFields = [
     { label: 'First Name', type: 'text', value: user.firstName, dataKey: 'firstName', placeholder: 'John' },
     { label: 'Last Name', type: 'text', value: user.lastName, dataKey: 'lastName', placeholder: 'Smith' },
+    { label: 'Address', type: 'text', value: user.address, dataKey: 'address', placeholder: '5555 First Street' },
+    { label: 'City', type: 'text', value: user.city, dataKey: 'city', placeholder: 'Montreal' },
+    { label: 'Province', type: 'text', value: user.province, dataKey: 'province', placeholder: 'Quebec' },
+    { label: 'Email', type: 'email', value: user.email, dataKey: 'email', placeholder: 'john.smith@email.ca' },
+    { label: 'Phone Number', type: 'text', value: user.phone, dataKey: 'phone', placeholder: '1-514-999-9999' },
+    { label: 'Availability', type: 'text', value: user.availability, dataKey: 'availability', placeholder: 'Aug 5-8 from 9 AM to 5 PM' },
+    { label: 'Password', type: 'password', value: user.password, dataKey: 'password', placeholder: null }
   ];
 
   const updateUser = (event, key) => {
@@ -71,54 +79,6 @@ function ProfileForm(props) {
         />
       )}
       {inputFields}
-      <TextField
-        label="Address"
-        type='text'
-        value={user.address}
-        onChange={(e) => updateUser(e, "address")}
-        placeholder='5555 First Street'
-      />
-      <TextField
-        label="City"
-        type='text'
-        value={user.city}
-        onChange={(e) => updateUser(e, "city")}
-        placeholder='Montreal'
-      />
-      <TextField
-        label="Province"
-        type='text'
-        value={user.province}
-        onChange={(e) => updateUser(e, "province")}
-        placeholder='Quebec'
-      />
-      <TextField
-        label="Email"
-        type='email'
-        value={user.email}
-        onChange={(e) => updateUser(e, "email")}
-        placeholder='john.smith@email.ca'
-      />
-      <TextField
-        label="Phone Number"
-        type='text'
-        value={user.phone}
-        onChange={(e) => updateUser(e, "phone")}
-        placeholder='1-514-999-9999'
-      />
-      <TextField
-        label="Availability"
-        type='text'
-        value={user.availability}
-        onChange={(e) => updateUser(e, "availability")}
-        placeholder='Aug 5 - Aug 8 from 9 AM to 5 PM'
-      />
-      <TextField
-        label="Password"
-        type='password'
-        value={user.password}
-        onChange={(e) => updateUser(e, "password")}
-      />
       {(user.role === 'Farmer' || user.role === 'Food Bank') && (
         <TextField
           label="Capacity"
