@@ -1,7 +1,5 @@
 import "./profile.css";
 import Button from '@mui/material/Button';
-import Link from "@mui/material/Link";
-import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
 import Paper from '@mui/material/Paper';
@@ -80,7 +78,7 @@ function Profile(props) {
                             <FaArrowLeft />
                         </Button>
                         <h1 id="profile_tag">{profileMode}Profile</h1>
-                        <img src={defaultProfilePic} alt="Profile Picture" id="profilePic" />
+                        <img src={defaultProfilePic} alt={user.firstName + " " + user.lastName} id="profilePic" />
                             
                         <Button onClick={handleImageUpload}>
                             Change Profile Picture
@@ -102,7 +100,6 @@ function Profile(props) {
 
                         {editButtonText === 'Edit Profile' ? (
                             <>
-                                {/* Some hardcoded values still left to update */}
                                 {user.role === 'Farmer' && (
                                     <div className="info">
                                         <p> <b>Farm Name </b></p>
@@ -167,6 +164,7 @@ function Profile(props) {
                                         <p> {user.foodBank}</p>
                                     </div>
                                 )}
+                                {/* Some hardcoded values still left to update */}
                                 <div className="info">
                                     <p> <b>Events participated </b></p>
                                     <p> User's events</p>
