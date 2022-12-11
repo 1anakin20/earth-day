@@ -40,8 +40,6 @@ function Post(props) {
 
     // click event to take user to post details
     const handlePostClick = (event) => {
-        console.log(event.currentTarget.id);
-        console.log(event.currentTarget);
         navigateToPost(`/post_details/${event.currentTarget.id}`)
     };
     return (
