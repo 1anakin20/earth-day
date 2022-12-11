@@ -34,7 +34,7 @@ const NewPost = (props) => {
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-        createGleaningPost(formValues.farm, formValues.cropType, formValues.description, formValues.date, formValues.address, formValues.foodBank, formValues.capacity, isUrgent);
+        createGleaningPost(formValues, isUrgent);
         navigate('/');
     };
     return ( user.role === 'Farmer' ? (
