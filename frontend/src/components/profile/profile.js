@@ -78,7 +78,11 @@ function Profile(props) {
                             <FaArrowLeft />
                         </Button>
                         <h1 id="profile_tag">{profileMode}Profile</h1>
-                        <img src={defaultProfilePic} alt={user.firstName + " " + user.lastName} id="profilePic" />
+                        <img
+                            src={defaultProfilePic}
+                            alt={user.firstName + " " + user.lastName}
+                            id="profilePic"
+                        />
                             
                         <Button onClick={handleImageUpload}>
                             Change Profile Picture
