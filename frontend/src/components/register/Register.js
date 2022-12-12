@@ -45,9 +45,9 @@ function Register(props) {
                         onClick={() => navigate('/login')}>
                         Login
                     </Button>
-                    <Button
-                        variant={"contained"}
-                        color={"warning"}
+                    <Button                     
+                        size="small"
+                        color="success"
                         onClick={() => navigate('/')}>
                         Back
                     </Button>

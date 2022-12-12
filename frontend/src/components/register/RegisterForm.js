@@ -32,8 +32,8 @@ function RegisterForm(props) {
                         Login
                     </Button>
                     <Button
-                        variant={"contained"}
-                        color={"warning"}
+                        size="small"
+                        color="success"
                         onClick={() => setUser({})}>
                         Back
                     </Button>

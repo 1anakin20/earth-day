@@ -50,8 +50,8 @@ function Login(props) {
                             Register
                         </Button>
                         <Button
-                            variant={"contained"}
-                            color={"warning"}
+                            size="small"
+                            color="success"
                             onClick={() => navigate('/')}>
                             Back
                         </Button>
