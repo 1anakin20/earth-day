@@ -9,32 +9,27 @@ import ResponsiveAppBar from "../ResponsiveAppBar";
 import YardIcon from "@mui/icons-material/Yard";
 
 import {useNavigate} from 'react-router-dom';
-import {getFarmer} from "../../database/database";
+import { getUser } from "../../database/database";
 
 function Login(props) {
-    const {role, username, setRole, setUsername} = props;
+    const { setUser } = props;
 
     const navigate = useNavigate();
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const signIn = async () => {
         // Check required fields are filled
         // Authenticate and set role based on database
-        // Look up if they are a farmer in the database
-        let isFarmer = await getFarmer(username)
-        console.log(isFarmer)
-        if (isFarmer !== null) {
-            setRole("farmer");
+        let isUser = await getUser(username, password);
+        
+        if (isUser !== null) {
+            setUser(isUser);
+            navigate('/');
         } else {
-            setRole("");
+            console.log("Account does not exist!");
         }
-        navigate('/');
     }
-
-    // useState(() => {
-    //     signIn();
-    // })
-
 
     return (
         <div className="login__root">
@@ -48,7 +43,18 @@ function Login(props) {
                             </Link>
                         </h1>
                         <p>Don't have an account?</p>
-                        <Link href="register" underline="none">Register</Link>
+                        <Button
+                            variant={"contained"}
+                            color={"info"}
+                            onClick={() => navigate('/register')}>
+                            Register
+                        </Button>
+                        <Button
+                            size="small"
+                            color="success"
+                            onClick={() => navigate('/')}>
+                            Back
+                        </Button>
                         <Divider variant={"middle"} className={"register__separation"}>
                             <Chip label={"Or login"} color={"default"}/>
                         </Divider>
@@ -69,6 +75,7 @@ function Login(props) {
                             onChange={(e) => setPassword(e.target.value)}/>
                         <Button
                             variant={"contained"}
+                            color={"success"}
                             className="login__btn"
                             onClick={signIn}>
                             Login

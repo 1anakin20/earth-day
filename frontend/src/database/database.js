@@ -1,6 +1,6 @@
-import {initializeApp} from 'firebase/app';
-import {getDatabase, ref, set, child, update, onValue, push, remove, get} from 'firebase/database';
-import {firebaseConfig} from "./firebaseConfig";
+import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, set, child, update, onValue, push, remove, get } from 'firebase/database';
+import { firebaseConfig } from "./firebaseConfig";
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
@@ -30,43 +30,37 @@ function writeGleanerData(firstName, lastName, address, city, province, email, p
     });
 }
 
-export async function getFarmer(name) {
-    const db = getDatabase();
-    let data = await get(child(dbRef, 'farm/'));
-    let farm = data.val();
-    for (const farmKey in farm) {
-        if (farm[farmKey].email === name) {
-            return farm[farmKey];
-        }
-    }
-    return null;
-}
-
 // writeGleanerData('jack', 'wang','123 montreal','montreal','quebec' ,'111_jack@gmail.com', '5147897894', '1450', 'Nov. 7', 'xy');
 
 
 //------------------------------add farmer---------------------------------------------//
 
-export function writeFarmerData(farmName, firstName, lastName, address, city, province, email, phone, availability, password) {
+export function writeFarmerData(user, setUser) {
     const db = getDatabase(app);
     // const reference = ref(db, 'gleaner/' + userId); 
 
-    const ListRef = ref(db, 'farm');
+    const ListRef = ref(db, 'users');
     const newRef = push(ListRef);
 
+    setUser(prev => ({ ...prev,
+        id: newRef.key
+    }))
+
     set(newRef, {
-        farmName: farmName,
-        firstName: firstName,
-        lastName: lastName,
-        address: address,
-        city: city,
-        province: province,
-        email: email,
-        phone: phone,
-        availability: availability,
-        password: password
-
-
+        id: newRef.key,
+        farmName: user.farmName,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        address: user.address,
+        city: user.city,
+        province: user.province,
+        email: user.email,
+        phone: user.phone,
+        availability: user.availability,
+        password: user.password,
+        capacity: user.capacity,
+        foodBank: user.foodBank,
+        role: 'Farmer'
     });
 }
 
@@ -82,7 +76,6 @@ function writeFoodbankData(FoodbankName, firstName, lastName, address, city, pro
     const ListRef = ref(db, 'foodbank');
     const newRef = push(ListRef);
 
-
     set(newRef, {
         FoodbankName: FoodbankName,
         firstName: firstName,
@@ -94,8 +87,6 @@ function writeFoodbankData(FoodbankName, firstName, lastName, address, city, pro
         phone: phone,
         availability: availability,
         password: password
-
-
     });
 }
 
@@ -106,22 +97,22 @@ function writeFoodbankData(FoodbankName, firstName, lastName, address, city, pro
 // 2. create posts (gleaning post, inventory post, storage post)
 //===========================================================================================
 
-//create gleaning post---------------------------------------------//
+//-----------------------create gleaning post---------------------------------------------//
 
-export function createGleaningPost(farmId, cropType, description, date, address, foodBank, capacity, urgent) {
+export function createGleaningPost(formValues, urgent) {
     const db = getDatabase();
     const postListRef = ref(db, 'posts');
     const newPostRef = push(postListRef);
     set(newPostRef, {
         id: newPostRef.key,
-        farm: farmId,
-        cropType: cropType,
-        description: description,
-        date: date,
-        address: address,
-        foodBank: foodBank,
-        capacity: capacity,
-        remaining: capacity,
+        farm: formValues.farm,
+        cropType: formValues.cropType,
+        description: formValues.description,
+        date: formValues.date,
+        address: formValues.address,
+        foodBank: formValues.foodBank,
+        capacity: formValues.capacity,
+        remaining: formValues.capacity,
         urgent: urgent,
         gleanerList: [],
     });
@@ -134,7 +125,7 @@ export function createGleaningPost(farmId, cropType, description, date, address,
 // 3. add gleaners(food banks, farms) to related post lists
 //===========================================================================================
 
-//add gleaners to post---------------------------------------------//
+//----------------------add gleaners to post---------------------------------------------//
 
 function addGleanerToPost(gleanerId, postId) {
     const db = getDatabase();
@@ -142,7 +133,6 @@ function addGleanerToPost(gleanerId, postId) {
     const newPostRef = push(postListRef);
     set(newPostRef, {
         gleanerId: gleanerId,
-
     });
 }
 
@@ -158,16 +148,17 @@ function addGleanerToPost(gleanerId, postId) {
 // get gleaner id
 
 const dbRef = ref(getDatabase());
+
 // get(child(dbRef, 'gleaner/-NGA-78iLQRYeoNUSeeH')).then((snapshot) => {
-get(child(dbRef, 'gleaner/')).then((snapshot) => {
-    if (snapshot.exists()) {
-        console.log(snapshot.val());
-    } else {
-        console.log("No data available");
-    }
-}).catch((error) => {
-    console.error(error);
-});
+// get(child(dbRef, 'gleaner/')).then((snapshot) => {
+//     if (snapshot.exists()) {
+//         console.log(snapshot.val());
+//     } else {
+//         console.log("No data available");
+//     }
+// }).catch((error) => {
+//     console.error(error);
+// });
 
 
 //------------------------------remove record---------------------------------------------//
@@ -183,15 +174,59 @@ function deleteDate(gleanId) {
 }
 
 // ------------------------------ get posts ---------------------------------------------//
+
 export async function getAllPosts() {
-    const db = getDatabase();
-    let data = await get(child(dbRef, 'posts/'))
-    return data.val()
+    let data = await get(child(dbRef, 'posts/'));
+    return data.val();
 }
 
 export async function getPostById(postId) {
-    const db = getDatabase();
-    let data = await get(child(dbRef, 'posts/' + postId))
-    return data.val()
+    let data = await get(child(dbRef, 'posts/' + postId));
+    return data.val();
+}
+
+
+//===========================================================================================
+// 4. User information
+//===========================================================================================
+
+//-----------------retreive user information---------------------------------------------//
+
+export async function getUser(username, pass) {
+    let data = await get(child(dbRef, 'users/'));
+    let users = data.val();
+    for (const userKey in users) {
+        if (users[userKey].email === username) {
+            if (users[userKey].password === pass) {
+                return users[userKey];
+            }
+        }
+    }
+    return null;
+}
+
+//-----------------update farmer information---------------------------------------------//
+
+export function updateFarmerData(user) {
+    const userData = {
+        id: user.id,
+        farmName: user.farmName,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        address: user.address,
+        city: user.city,
+        province: user.province,
+        email: user.email,
+        phone: user.phone,
+        availability: user.availability,
+        password: user.password,
+        capacity: user.capacity,
+        foodBank: user.foodBank,
+        role: 'Farmer'
+    };
+    
+    const updates = {};
+    updates['users/' + user.id] = userData;
+    return update(dbRef, updates);
 }
 

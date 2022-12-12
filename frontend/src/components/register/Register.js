@@ -1,3 +1,4 @@
+import ResponsiveAppBar from "../ResponsiveAppBar";
 import RegisterForm from './RegisterForm';
 
 import './Register.css';
@@ -5,28 +6,29 @@ import Button from '@mui/material/Button';
 import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
-
 import YardIcon from "@mui/icons-material/Yard";
-import ResponsiveAppBar from "../ResponsiveAppBar";
+
+import { useNavigate } from "react-router-dom";
 
 function Register(props) {
-    const { role, username, setRole, setUsername } = props;
+    const { user, setUser } = props;
 
-    return role ? (
+    let navigate = useNavigate();
+
+    return user.role ? (
         <div>
-            <ResponsiveAppBar/>
+            <ResponsiveAppBar
+                user={user}
+            />
             <RegisterForm
-                role={role}
-                username={username}
-                setRole={setRole}
-                setUsername={setUsername}
+                user={user}
+                setUser={setUser}
             />
         </div>
     ) : (
         <div className="register__root">
             <ResponsiveAppBar
-                role={role}
-                username={username}
+                user={user}
             />
             <div className="register">
                 <section className="register__container">
@@ -37,7 +39,18 @@ function Register(props) {
                         </Link>
                     </h1>
                     <p>Already have an account?</p>
-                    <Link href="login" underline="none">Login</Link>
+                    <Button
+                        variant={"contained"}
+                        color={"info"}
+                        onClick={() => navigate('/login')}>
+                        Login
+                    </Button>
+                    <Button                     
+                        size="small"
+                        color="success"
+                        onClick={() => navigate('/')}>
+                        Back
+                    </Button>
                     <Divider variant={"middle"} className={"login__separation"}>
                         <Chip label={"Or register"} color={"default"}/>
                     </Divider>
@@ -45,19 +58,19 @@ function Register(props) {
                     <Button
                         variant={"contained"}
                         color={"warning"}
-                        onClick={() => setRole('gleaner')}>
+                        onClick={() => setUser({role: 'Gleaner'})}>
                         Gleaner
                     </Button>
                     <Button
                         variant={"contained"}
                         color={"success"}
-                        onClick={() => setRole('farmer')}>
+                        onClick={() => setUser({role: 'Farmer'})}>
                         Farmer
                     </Button>
                     <Button
                         variant={"contained"}
                         color={"info"}
-                        onClick={() => setRole('foodBank')}>
+                        onClick={() => setUser({role: 'Food Bank'})}>
                         Food Bank
                     </Button>
                 </section>
