@@ -25,7 +25,7 @@ function ProfileForm(props) {
 
   const updateUser = (event, key) => {
     setUser(prev => ({ ...prev,
-        [key]: event.target.value
+      [key]: event.target.value
     }));
   };
 
