@@ -1,3 +1,4 @@
+import ResponsiveAppBar from "../ResponsiveAppBar";
 import RegisterForm from './RegisterForm';
 
 import './Register.css';
@@ -5,12 +6,14 @@ import Button from '@mui/material/Button';
 import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
-
 import YardIcon from "@mui/icons-material/Yard";
-import ResponsiveAppBar from "../ResponsiveAppBar";
+
+import { useNavigate } from "react-router-dom";
 
 function Register(props) {
     const { user, setUser } = props;
+
+    let navigate = useNavigate();
 
     return user.role ? (
         <div>
@@ -36,7 +39,18 @@ function Register(props) {
                         </Link>
                     </h1>
                     <p>Already have an account?</p>
-                    <Link href="login" underline="none">Login</Link>
+                    <Button
+                        variant={"contained"}
+                        color={"info"}
+                        onClick={() => navigate('/login')}>
+                        Login
+                    </Button>
+                    <Button
+                        variant={"contained"}
+                        color={"warning"}
+                        onClick={() => navigate('/')}>
+                        Back
+                    </Button>
                     <Divider variant={"middle"} className={"login__separation"}>
                         <Chip label={"Or register"} color={"default"}/>
                     </Divider>

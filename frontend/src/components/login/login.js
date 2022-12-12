@@ -43,7 +43,18 @@ function Login(props) {
                             </Link>
                         </h1>
                         <p>Don't have an account?</p>
-                        <Link href="register" underline="none">Register</Link>
+                        <Button
+                            variant={"contained"}
+                            color={"info"}
+                            onClick={() => navigate('/register')}>
+                            Register
+                        </Button>
+                        <Button
+                            variant={"contained"}
+                            color={"warning"}
+                            onClick={() => navigate('/')}>
+                            Back
+                        </Button>
                         <Divider variant={"middle"} className={"register__separation"}>
                             <Chip label={"Or login"} color={"default"}/>
                         </Divider>
@@ -64,6 +75,7 @@ function Login(props) {
                             onChange={(e) => setPassword(e.target.value)}/>
                         <Button
                             variant={"contained"}
+                            color={"success"}
                             className="login__btn"
                             onClick={signIn}>
                             Login
