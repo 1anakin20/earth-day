@@ -26,9 +26,7 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={
-                        <Landing
-                            user={user}
-                        />
+                        <Landing />
                     }/>
                     <Route path='/login' element={
                         <Login

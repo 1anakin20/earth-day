@@ -10,8 +10,7 @@ import "@fontsource/roboto/700.css";
 import ResponsiveAppBar from "../ResponsiveAppBar";
 import Post from "../post/Post";
 
-export default function Landing(props) {
-  const { user } = props;
+export default function Landing() {
   const queryClient = new QueryClient();
 
   return (
