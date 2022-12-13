@@ -5,13 +5,11 @@ import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {getPostById} from "../../database/database";
 
-function PostDetails(props) {
-    const { user } = props;
-    
+function PostDetails() {
     let urgent;
+    const navigate = useNavigate();
     const {postID} = useParams();
     const [post, setPost] = useState({});
-    let navigate = useNavigate();
 
     // when back arrow is clicked, user is redirected to the home page
     const homeRoute = () => {
