@@ -13,8 +13,7 @@ function PostDetails() {
 
     // when back arrow is clicked, user is redirected to the home page
     const homeRoute = () => {
-        let path = `..\.`;
-        navigate(path);
+        navigate('/');
     };
 
     useEffect(() => {
