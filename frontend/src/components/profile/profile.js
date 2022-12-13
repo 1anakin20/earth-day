@@ -70,9 +70,7 @@ function Profile() {
     return (
         <div className="profile__root">
             <div className="profile__content">
-                <ResponsiveAppBar
-                    user={user}
-                />
+                <ResponsiveAppBar />
 
                 <div className="profile">
                     <div className="profile__container">

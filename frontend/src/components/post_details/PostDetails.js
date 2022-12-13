@@ -36,9 +36,7 @@ function PostDetails(props) {
     return (
         <div className="details__root">
             <div className="details__content">
-                <ResponsiveAppBar
-                    user={user}
-                />
+                <ResponsiveAppBar />
                 <div className="posts__details">
                     <div className="details__container">
                         <h1>Opportunity details</h1>

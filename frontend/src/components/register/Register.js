@@ -17,9 +17,7 @@ function Register(props) {
 
     return user.role ? (
         <div>
-            <ResponsiveAppBar
-                user={user}
-            />
+            <ResponsiveAppBar />
             <RegisterForm
                 user={user}
                 setUser={setUser}
@@ -27,9 +25,7 @@ function Register(props) {
         </div>
     ) : (
         <div className="register__root">
-            <ResponsiveAppBar
-                user={user}
-            />
+            <ResponsiveAppBar />
             <div className="register">
                 <section className="register__container">
                     <h1 className='app_name'>
