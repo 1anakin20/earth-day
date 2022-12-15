@@ -19,7 +19,7 @@ function Login(props) {
     const [password, setPassword] = useState("");
 
     const signIn = async () => {
-        // Check required fields are filled
+        // Check required fields are filled (not implemented)
         // Authenticate and set role based on database
         let isUser = await getUser(username, password);
         
@@ -27,6 +27,7 @@ function Login(props) {
             setUser(isUser);
             navigate('/');
         } else {
+            // Display below message on the UI (not implemented)
             console.log("Account does not exist!");
         }
     }
