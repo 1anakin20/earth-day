@@ -29,9 +29,7 @@ function App() {
                         <Landing />
                     }/>
                     <Route path='/login' element={
-                        <Login
-                            setUser={setUser}
-                        />
+                        <Login />
                     }/>
                     <Route path='register' element={
                         <Register

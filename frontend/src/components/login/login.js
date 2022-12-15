@@ -4,15 +4,17 @@ import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import ResponsiveAppBar from "../ResponsiveAppBar";
 import YardIcon from "@mui/icons-material/Yard";
 
 import { useNavigate } from 'react-router-dom';
 import { getUser } from "../../database/database";
 
-function Login(props) {
-    const { setUser } = props;
+import { UserContext } from "../../utilities/UserContext";
+
+function Login() {
+    const [, setUser] = useContext(UserContext);
 
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
@@ -85,7 +87,8 @@ function Login(props) {
                     </div>
                 </div>
             </div>
-        </div>);
+        </div>
+    );
 }
 
 export default Login;
