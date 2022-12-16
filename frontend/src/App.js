@@ -11,7 +11,7 @@ import {
 
 import Register from './components/register/Register';
 import NewPost from "./components/new-post/NewPost";
-import Login from './components/login/login';
+import Login from './components/login/Login';
 import Profile from './components/profile/profile';
 import PostDetails from './components/post_details/PostDetails';
 
