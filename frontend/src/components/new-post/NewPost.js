@@ -1,10 +1,10 @@
-import {useState} from "react";
+import { useState } from "react";
 import Grid from "@mui/material/Grid";
-import {Button, Checkbox, TextareaAutosize, TextField} from "@mui/material";
+import { Button, Checkbox, TextareaAutosize, TextField } from "@mui/material";
 import "./NewPost.css";
 import ResponsiveAppBar from "../ResponsiveAppBar";
-import {createGleaningPost} from "../../database/database";
-import {useNavigate} from "react-router-dom";
+import { createGleaningPost } from "../../database/database";
+import { useNavigate } from "react-router-dom";
 
 const NewPost = (props) => {
     const { user } = props;
