@@ -39,10 +39,8 @@ function Login() {
                 <div className="login">
                     <div className="login__container">
                         <h1 className='app_name'>
-                            <Link href="/" underline='none'>
-                                <span className={"green"}><YardIcon/></span>
-                                <span className={"black"}> GLEAN</span><span className={"green"}>ful</span>
-                            </Link>
+                            <span className={"green"}><YardIcon/></span>
+                            <span className={"black"}> GLEAN</span><span className={"green"}>ful</span>
                         </h1>
                         <p>Don't have an account?</p>
                         <Button
