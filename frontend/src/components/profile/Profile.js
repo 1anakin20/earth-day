@@ -1,4 +1,4 @@
-import "./profile.css";
+import "./Profile.css";
 import Button from '@mui/material/Button';
 import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";

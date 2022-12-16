@@ -12,7 +12,7 @@ import {
 import Register from './components/register/Register';
 import NewPost from "./components/new-post/NewPost";
 import Login from './components/login/Login';
-import Profile from './components/profile/profile';
+import Profile from './components/profile/Profile';
 import PostDetails from './components/post_details/PostDetails';
 
 import { UserContext } from "./utilities/UserContext";
