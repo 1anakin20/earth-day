@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
 import Grid from "@mui/material/Grid";
 import { Button, Checkbox, TextareaAutosize, TextField } from "@mui/material";
 import "./NewPost.css";
-import ResponsiveAppBar from "../ResponsiveAppBar";
-import { createGleaningPost } from "../../database/database";
-import { useNavigate } from "react-router-dom";
 
-const NewPost = (props) => {
-    const { user } = props;
+import ResponsiveAppBar from "../ResponsiveAppBar";
+
+import { createGleaningPost } from "../../database/database";
+import { UserContext } from "../../utilities/UserContext";
+
+const NewPost = () => {
+    const [user] = useContext(UserContext);
 
     const defaultValues = {
         farm: user.farmName,
