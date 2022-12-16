@@ -1,4 +1,3 @@
-import ResponsiveAppBar from "../ResponsiveAppBar";
 import RegisterForm from './RegisterForm';
 
 import './Register.css';
@@ -17,7 +16,6 @@ function Register(props) {
 
     return user.role ? (
         <div>
-            <ResponsiveAppBar />
             <RegisterForm
                 user={user}
                 setUser={setUser}
@@ -25,7 +23,6 @@ function Register(props) {
         </div>
     ) : (
         <div className="register__root">
-            <ResponsiveAppBar />
             <div className="register">
                 <section className="register__container">
                     <h1 className='app_name'>
