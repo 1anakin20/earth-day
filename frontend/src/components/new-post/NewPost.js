@@ -119,7 +119,7 @@ const NewPost = (props) => {
             </form>
         </div>
     ) : (
-        <div>Access denied!</div>
+        <p>Access denied!</p>
     )
     );
 };
