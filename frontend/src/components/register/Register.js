@@ -2,7 +2,6 @@ import RegisterForm from './RegisterForm';
 
 import './Register.css';
 import Button from '@mui/material/Button';
-import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
 import YardIcon from "@mui/icons-material/Yard";
