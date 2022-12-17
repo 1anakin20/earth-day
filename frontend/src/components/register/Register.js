@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from "react-router-dom";
+
 import RegisterForm from './RegisterForm';
 
 import './Register.css';
@@ -7,10 +9,10 @@ import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
 import YardIcon from "@mui/icons-material/Yard";
 
-import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../utilities/UserContext";
 
-function Register(props) {
-    const { user, setUser } = props;
+function Register() {
+    const [user, setUser] = useContext(UserContext);
 
     const navigate = useNavigate();
     const [registerCSS, setRegisterCSS] = useState('register');

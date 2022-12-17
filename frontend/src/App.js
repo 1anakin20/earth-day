@@ -32,10 +32,7 @@ function App() {
                         <Login />
                     }/>
                     <Route path='register' element={
-                        <Register
-                            user={user}
-                            setUser={setUser}
-                        />
+                        <Register />
                     }/>
                     <Route path='/new_post' element={
                         <NewPost />
