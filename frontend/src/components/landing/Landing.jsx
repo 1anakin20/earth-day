@@ -14,7 +14,7 @@ export default function Landing() {
   const queryClient = new QueryClient();
 
   return (
-    <div className="App">
+    <div className="landing">
       <QueryClientProvider client={queryClient}>
         <div>
           <ResponsiveAppBar />
