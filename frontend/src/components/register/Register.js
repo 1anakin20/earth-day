@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 
-import RegisterForm from './RegisterForm';
+import ProfileForm from "../ProfileForm";
 
 import './Register.css';
 import Button from '@mui/material/Button';
@@ -61,10 +61,19 @@ function Register() {
                             <Chip label={"Or register"} color={"default"}/>
                         </Divider>
                         {user.role ? (
-                            <RegisterForm
-                                user={user}
-                                setUser={setUser}
-                            />
+                            <>
+                                <ProfileForm
+                                    user={user}
+                                    submitButtonText='Register'
+                                    setUser={setUser}
+                                    setProfileMode={null}
+                                    setSubmitButtonText={null}
+                                />
+                                <p>
+                                    By clicking Register, you agree to the Gleanful <br/><a href='legal'>User Agreement</a>,{' '}
+                                    <a href='legal'>Privacy Policy</a>, and <a href='legal'>Cookie Policy</a>.
+                                </p>
+                            </>
                         ) : (
                             <>
                                 <p>Please select the account type</p>
