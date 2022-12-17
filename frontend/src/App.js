@@ -25,26 +25,16 @@ function App() {
         <UserContext.Provider value={[user, setUser]}>
             <BrowserRouter>
                 <Routes>
-                    <Route path='/' element={
-                        <Landing />
-                    }/>
-                    <Route path='/login' element={
-                        <Login />
-                    }/>
-                    <Route path='register' element={
-                        <Register />
-                    }/>
-                    <Route path='/new_post' element={
-                        <NewPost />
-                    }/>
+                    <Route path='/' element={<Landing />}/>
+                    <Route path='/login' element={<Login />}/>
+                    <Route path='register' element={<Register />}/>
+                    <Route path='/new_post' element={<NewPost />}/>
                     <Route path='/post_details/:postID' element={
                         <QueryClientProvider client={queryClient}>
                             <PostDetails />
                         </QueryClientProvider>
                     }/>
-                    <Route path='/profile' element={
-                        <Profile />
-                    }/>
+                    <Route path='/profile' element={<Profile />}/>
                     <Route path='*' element={<Navigate to='/'/>}/>
                 </Routes>
             </BrowserRouter>
