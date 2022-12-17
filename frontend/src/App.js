@@ -1,6 +1,5 @@
 import "./App.css";
 import { useState } from 'react';
-import Landing from "./components/landing/Landing";
 import { QueryClient, QueryClientProvider } from "react-query";
 import {
     BrowserRouter,
@@ -9,6 +8,7 @@ import {
     Navigate
 } from 'react-router-dom';
 
+import Landing from "./components/landing/Landing";
 import Register from './components/register/Register';
 import NewPost from "./components/new-post/NewPost";
 import Login from './components/login/Login';
