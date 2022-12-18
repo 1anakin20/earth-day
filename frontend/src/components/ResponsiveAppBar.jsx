@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -17,13 +17,15 @@ import { alpha, styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { useNavigate } from 'react-router-dom';
 
+import { UserContext } from "../utilities/UserContext";
+
 const pages = ["Farmers", "Food Banks"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function ResponsiveAppBar(props) {
-  const { user } = props;
+function ResponsiveAppBar() {
+  const [user] = useContext(UserContext);
   
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
   const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {

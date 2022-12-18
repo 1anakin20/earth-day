@@ -4,22 +4,23 @@ import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
-import {useState} from "react";
-import ResponsiveAppBar from "../ResponsiveAppBar";
+import { useState, useContext } from "react";
 import YardIcon from "@mui/icons-material/Yard";
 
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getUser } from "../../database/database";
 
-function Login(props) {
-    const { setUser } = props;
+import { UserContext } from "../../utilities/UserContext";
+
+function Login() {
+    const [, setUser] = useContext(UserContext);
 
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const signIn = async () => {
-        // Check required fields are filled
+        // Check required fields are filled (not implemented)
         // Authenticate and set role based on database
         let isUser = await getUser(username, password);
         
@@ -27,6 +28,7 @@ function Login(props) {
             setUser(isUser);
             navigate('/');
         } else {
+            // Display below message on the UI (not implemented)
             console.log("Account does not exist!");
         }
     }
@@ -37,10 +39,8 @@ function Login(props) {
                 <div className="login">
                     <div className="login__container">
                         <h1 className='app_name'>
-                            <Link href="/" underline='none'>
-                                <span className={"green"}><YardIcon/></span>
-                                <span className={"black"}> GLEAN</span><span className={"green"}>ful</span>
-                            </Link>
+                            <span className={"green"}><YardIcon/></span>
+                            <span className={"black"}> GLEAN</span><span className={"green"}>ful</span>
                         </h1>
                         <p>Don't have an account?</p>
                         <Button
@@ -84,7 +84,8 @@ function Login(props) {
                     </div>
                 </div>
             </div>
-        </div>);
+        </div>
+    );
 }
 
 export default Login;

@@ -1,10 +1,10 @@
-import "./profile.css";
+import "./Profile.css";
 import Button from '@mui/material/Button';
 import Chip from "@mui/material/Chip";
 import TextField from "@mui/material/TextField";
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import { useState } from "react";
+import { useState, useContext } from "react";
 import defaultProfilePic from '../../images/avatar/Default_pfp.png';
 import { FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
@@ -12,8 +12,10 @@ import { useNavigate } from "react-router-dom";
 import ResponsiveAppBar from "../ResponsiveAppBar";
 import ProfileForm from "../ProfileForm";
 
-function Profile(props) {
-    const { user, setUser } = props;
+import { UserContext } from "../../utilities/UserContext";
+
+function Profile() {
+    const [user, setUser] = useContext(UserContext);
     
     const [interest, setInterest] = useState("");
     const [chipData, setChipData] = useState([
@@ -68,9 +70,7 @@ function Profile(props) {
     return (
         <div className="profile__root">
             <div className="profile__content">
-                <ResponsiveAppBar
-                    user={user}
-                />
+                <ResponsiveAppBar />
 
                 <div className="profile">
                     <div className="profile__container">

@@ -1,26 +1,18 @@
-import "./landing.css";
+import "./Landing.css";
 import * as React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
 
 import ResponsiveAppBar from "../ResponsiveAppBar";
 import Post from "../post/Post";
 
-export default function Landing(props) {
-  const { user } = props;
+export default function Landing() {
   const queryClient = new QueryClient();
 
   return (
-    <div className="App">
+    <div className="landing">
       <QueryClientProvider client={queryClient}>
         <div>
-          <ResponsiveAppBar
-            user={user}
-          />
+          <ResponsiveAppBar />
           <div className={"landing__background"}>
             <div className="landing__long">
               <Post postID={"all"} />

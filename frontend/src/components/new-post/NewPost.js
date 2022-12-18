@@ -1,13 +1,17 @@
-import {useState} from "react";
-import Grid from "@mui/material/Grid";
-import {Button, Checkbox, TextareaAutosize, TextField} from "@mui/material";
-import "./NewPost.css";
-import ResponsiveAppBar from "../ResponsiveAppBar";
-import {createGleaningPost} from "../../database/database";
-import {useNavigate} from "react-router-dom";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
-const NewPost = (props) => {
-    const { user } = props;
+import Grid from "@mui/material/Grid";
+import { Button, Checkbox, TextareaAutosize, TextField } from "@mui/material";
+import "./NewPost.css";
+
+import ResponsiveAppBar from "../ResponsiveAppBar";
+
+import { createGleaningPost } from "../../database/database";
+import { UserContext } from "../../utilities/UserContext";
+
+const NewPost = () => {
+    const [user] = useContext(UserContext);
 
     const defaultValues = {
         farm: user.farmName,
@@ -39,9 +43,7 @@ const NewPost = (props) => {
     };
     return ( user.role === 'Farmer' ? (
         <div>
-            <ResponsiveAppBar
-                user={user}
-            />
+            <ResponsiveAppBar />
             <form onSubmit={handleSubmit} id={"form"} className={"new_post__background"}>
                 <Grid className={"form__grid"} container alignItems="center" justify="center" direction="column">
                     <Grid item className={"fieldset"}>
@@ -121,7 +123,7 @@ const NewPost = (props) => {
             </form>
         </div>
     ) : (
-        <div>Access denied!</div>
+        <p>Access denied!</p>
     )
     );
 };

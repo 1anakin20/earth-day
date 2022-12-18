@@ -7,7 +7,7 @@ import {useEffect, useState} from "react";
 
 function Post(props) {
     const [posts, setPosts] = useState([]);
-    const navigateToPost = useNavigate()
+    const navigateToPost = useNavigate();
 
     const getPostByID = async (id) => {
         const fetchedPost = await getPostByID(id);
@@ -22,9 +22,9 @@ function Post(props) {
                 if (!posts.some(post => post.id === key)) {
                     setPosts(prevPosts => {
                         if (!prevPosts.some(post => post.id === key)) {
-                            return [...prevPosts, fetchedPosts[key]]
+                            return [...prevPosts, fetchedPosts[key]];
                         } else {
-                            return [...prevPosts]
+                            return [...prevPosts];
                         }
                     })
                 }
@@ -33,14 +33,14 @@ function Post(props) {
         
         if (props.postID === "all") {
             if (posts.length === 0) {
-                getPosts()
+                getPosts();
             }
         }
     }, [posts, props.postID]);
 
     // click event to take user to post details
     const handlePostClick = (event) => {
-        navigateToPost(`/post_details/${event.currentTarget.id}`)
+        navigateToPost(`/post_details/${event.currentTarget.id}`);
     };
     return (
         <>

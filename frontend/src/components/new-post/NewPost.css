@@ -1,15 +1,3 @@
-html {
-    background-color: rgba(229, 253, 220, 0.34);
-}
-
-.new_post__background {
-    background-image: url(../../images/field_1.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-}
-
 #description {
     width: 100%;
     resize: none;

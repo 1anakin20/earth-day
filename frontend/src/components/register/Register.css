@@ -1,18 +1,25 @@
 .register__root {
-  background-image: url(../../../src/images/field_1.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
   height: 100vh;
 }
 
+.register__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .register {
-  width: 100vw;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10em 0;
+}
+
+.register__long {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em 0;
 }
 
 .register__container {
