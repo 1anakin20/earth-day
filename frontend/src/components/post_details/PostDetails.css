@@ -1,11 +1,5 @@
 .details__root {
-  background-image: url(../../images/field_1.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
   height: 100vh;
-  width: 100vw;
 }
 
 .details__content {
