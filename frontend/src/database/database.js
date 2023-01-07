@@ -121,6 +121,14 @@ export function createGleaningPost(formValues, urgent) {
 // createGleaningPost('1', 'apple, good', '')
 
 
+//-----------------------delete gleaning post---------------------------------------------//
+
+function deleteGleaningPost(postId) {
+    const postRef = db.ref('posts/' + postId);
+    postRef.remove();
+}
+
+
 //===========================================================================================
 // 3. add gleaners(food banks, farms) to related post lists
 //===========================================================================================
