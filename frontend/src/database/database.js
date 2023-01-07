@@ -123,7 +123,7 @@ export function createGleaningPost(formValues, urgent) {
 
 //-----------------------delete gleaning post---------------------------------------------//
 
-function deleteGleaningPost(postId) {
+export function deleteGleaningPost(postId) {
     const postRef = db.ref('posts/' + postId);
     postRef.remove();
 }
