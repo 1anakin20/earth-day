@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import ResponsiveAppBar from "../ResponsiveAppBar";
 import React, {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-import {getPostById} from "../../database/database";
+import { getPostById, deleteGleaningPost } from "../../database/database";
 
 function PostDetails() {
     let urgent;
@@ -13,6 +13,11 @@ function PostDetails() {
 
     // when back arrow is clicked, user is redirected to the home page
     const homeRoute = () => {
+        navigate('/');
+    };
+
+    const deleteRoute = () => {
+        deleteGleaningPost(postID);
         navigate('/');
     };
 
@@ -67,6 +72,13 @@ function PostDetails() {
                             <p>{post.capacity}</p>
                         </div>
 
+                        <Button
+                            variant={"contained"}
+                            color="error"
+                            className="delete__btn"
+                            onClick={deleteRoute}>
+                            Delete Post
+                        </Button>
                         <Button
                             variant={"contained"}
                             color="success"

@@ -32,6 +32,10 @@
   gap: 75px;
 }
 
+.delete__btn{
+  width: 9em;
+}
+
 .back__btn{
   display: flex;
   width: 10px;
