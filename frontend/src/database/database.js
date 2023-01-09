@@ -124,8 +124,10 @@ export function createGleaningPost(formValues, urgent) {
 //-----------------------delete gleaning post---------------------------------------------//
 
 export function deleteGleaningPost(postId) {
-    const postRef = db.ref('posts/' + postId);
-    postRef.remove();
+    const postRef = ref(db, 'posts/' + postId);
+    remove(postRef)
+        .then(() => alert('Post deleted successfully'))
+        .catch((error) => alert('Delete failed. Error: ' + error));
 }
 
 
