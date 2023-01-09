@@ -38,7 +38,7 @@ const NewPost = () => {
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-        createGleaningPost(formValues, isUrgent);
+        createGleaningPost(formValues, isUrgent, user.id);
         navigate('/');
     };
     return ( user.role === 'Farmer' ? (

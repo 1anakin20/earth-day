@@ -99,12 +99,13 @@ function writeFoodbankData(FoodbankName, firstName, lastName, address, city, pro
 
 //-----------------------create gleaning post---------------------------------------------//
 
-export function createGleaningPost(formValues, urgent) {
+export function createGleaningPost(formValues, urgent, creatorId) {
     const db = getDatabase();
     const postListRef = ref(db, 'posts');
     const newPostRef = push(postListRef);
     set(newPostRef, {
         id: newPostRef.key,
+        creatorId: creatorId,
         farm: formValues.farm,
         cropType: formValues.cropType,
         description: formValues.description,
