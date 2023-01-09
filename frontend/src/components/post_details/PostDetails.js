@@ -1,8 +1,8 @@
 import "./PostDetails.css";
 import Button from '@mui/material/Button';
 import ResponsiveAppBar from "../ResponsiveAppBar";
-import React, {useEffect, useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { getPostById, deleteGleaningPost } from "../../database/database";
 
 function PostDetails() {
