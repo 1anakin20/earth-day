@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getPostById, deleteGleaningPost } from "../../database/database";
 
-function PostDetails() {
+function PostDetails(props) {
     let urgent;
     const navigate = useNavigate();
     const {postID} = useParams();
@@ -72,13 +72,15 @@ function PostDetails() {
                             <p>{post.capacity}</p>
                         </div>
 
-                        <Button
-                            variant={"contained"}
-                            color="error"
-                            className="delete__btn"
-                            onClick={deleteRoute}>
-                            Delete Post
-                        </Button>
+                        {props.userId === post.creatorId && (
+                            <Button
+                                variant={"contained"}
+                                color="error"
+                                className="delete__btn"
+                                onClick={deleteRoute}>
+                                Delete Post
+                            </Button>
+                        )}
                         <Button
                             variant={"contained"}
                             color="success"
