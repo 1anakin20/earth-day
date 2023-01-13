@@ -25,7 +25,6 @@ function PostDetails(props) {
         const getPost = async (id) => {
             const data = await getPostById(id);
             setPost(data);
-            console.log(data)
         }
 
         getPost(postID);
