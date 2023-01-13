@@ -100,7 +100,7 @@ function Post(props) {
                                     color: "black",
                                 }}
                             >
-                                <span className="button-text">Register</span>
+                                <span className="button-text">More details</span>
                             </Button>
                         </Card>
                     </Grid>
