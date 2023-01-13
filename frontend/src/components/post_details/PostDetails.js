@@ -1,11 +1,11 @@
 import "./PostDetails.css";
 import Button from '@mui/material/Button';
 import ResponsiveAppBar from "../ResponsiveAppBar";
-import React, {useEffect, useState} from "react";
-import {useNavigate, useParams} from "react-router-dom";
-import {getPostById} from "../../database/database";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { getPostById, deleteGleaningPost } from "../../database/database";
 
-function PostDetails() {
+function PostDetails(props) {
     let urgent;
     const navigate = useNavigate();
     const {postID} = useParams();
@@ -16,11 +16,15 @@ function PostDetails() {
         navigate('/');
     };
 
+    const deleteRoute = () => {
+        deleteGleaningPost(postID);
+        navigate('/');
+    };
+
     useEffect(() => {
         const getPost = async (id) => {
             const data = await getPostById(id);
             setPost(data);
-            console.log(data)
         }
 
         getPost(postID);
@@ -67,6 +71,16 @@ function PostDetails() {
                             <p>{post.capacity}</p>
                         </div>
 
+                        {props.userId === post.creatorId && (
+                            <Button
+                                variant={"contained"}
+                                color="error"
+                                className="delete__btn"
+                                sx={{mb: 1.5}}
+                                onClick={deleteRoute}>
+                                Delete Post
+                            </Button>
+                        )}
                         <Button
                             variant={"contained"}
                             color="success"

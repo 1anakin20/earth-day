@@ -25,16 +25,17 @@
   height: 70%;
 }
 
-.details{
+.details {
   flex-direction: row;
   display: flex;
   justify-content: space-between;
   gap: 75px;
 }
 
-.back__btn{
-  display: flex;
-  width: 10px;
-  margin: 0px;
-  justify-content: left;
+.delete__btn {
+  width: 9em;
+}
+
+.back__btn {
+  width: 6em;
 }
