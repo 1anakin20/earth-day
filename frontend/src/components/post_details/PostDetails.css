@@ -34,12 +34,8 @@
 
 .delete__btn {
   width: 9em;
-  margin-bottom: 1em;
 }
 
 .back__btn {
-  display: flex;
   width: 10px;
-  margin: 0px;
-  justify-content: left;
 }
