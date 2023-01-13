@@ -77,6 +77,7 @@ function PostDetails(props) {
                                 variant={"contained"}
                                 color="error"
                                 className="delete__btn"
+                                sx={{mb: 1.5}}
                                 onClick={deleteRoute}>
                                 Delete Post
                             </Button>
